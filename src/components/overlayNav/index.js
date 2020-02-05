@@ -11,6 +11,7 @@ import projectInfo from "../../assets/data/projectInfo"
 import { useStateValue } from "../../MyProvider"
 import { myConfig, overLayConfig } from "../utils"
 import Email from '../shared/email'
+import _ from 'lodash'
 
 const OverlayNav = () => {
   let location = useLocation();
@@ -21,25 +22,49 @@ const OverlayNav = () => {
   const { setProj, showRLinks, toggleRLinks } = useStateValue();
 
   useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
     toggleRLinks(false)
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    }
   },[])
+
+  const [lineHeight, setLineHeight] = useState(1)
+  const body = document.body;
+  const html = document.documentElement;
+  const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
+  const handleScroll = _.throttle(() => {
+     const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight,  html.scrollHeight, html.offsetHeight);
+     const windowBottom = windowHeight + window.pageYOffset;
+     // console.log(windowBottom/docHeight)
+     // if (windowBottom >= docHeight) {
+     //    console.log("bot")
+     // } else {
+     //   console.log("not bot")
+     // }
+     setLineHeight(5 * windowBottom/docHeight)
+     // windowBottom/docHeight
+     console.log(windowBottom/docHeight);
+   },200)
 
   useEffect(() => {
     if (location.pathname === '/'){
       setTextColor("white")
+      setLineHeight(5)
     }else{
       setTextColor("black")
+      handleScroll()
     }
   }, [location.pathname])
 
-  // const rLinkStyle = useSpring({
-  //   right: showRLinks ? "0rem" : "-2.5rem",
-  //   config: overLayConfig,
-  // })
   const rLinkStyle = useSpring({
     right: showRLinks ? "0rem" : "-2.5rem",
     config: overLayConfig,
   })
+  // const rLinkStyle = useSpring({
+  //   transform: showRLinks ? "translate3d(0px, 0%, 0px)" : "translate3d(0px, -50%, 0px)",
+  //   config: overLayConfig,
+  // })
 
   const bLinkStyle = useSpring({
     bottom: showRLinks ? "0rem" : "-2.5rem",
@@ -103,14 +128,18 @@ const OverlayNav = () => {
         </div>
       </animated.div>
 
-      <animated.section className={styles.rightLinks} style={rLinkStyle} >
+      <section className={styles.rightLinks}>
         {location.pathname === '/'
           ? <Number color={textColor}/>
           : null}
-        <span className={styles.about} style={{color: textColor}} onClick={() => toggle(true)}><p>about</p></span>
-        <span className={styles.work} style={{color: textColor}}><p>work</p></span>
-      </animated.section>
-      <span className={styles.line} style={{borderColor: textColor}}/>
+        <animated.div style={rLinkStyle}>
+          <span className={styles.about} style={{color: textColor}} onClick={() => toggle(true)}><p>about</p></span>
+          <span className={styles.work} style={{color: textColor}}><p>work</p></span>
+        </animated.div>
+        <span className={styles.line} style={{borderColor: textColor, height: `${lineHeight}rem`}}/>
+        <span className={styles.line} style={{borderColor: "#b3b3b3", zIndex: 100}}/>
+      </section>
+
       <animated.section className={styles.botLinks} style={bLinkStyle}>
         <p>
           <a href="https://github.com/ho-tonym" style={{color: textColor}}>

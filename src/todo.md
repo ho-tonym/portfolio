@@ -21,4 +21,7 @@ drop shadow is too intense
 
 slow out - speed up in mid - slow in
 
-d3-easings- remove? idk 
+d3-easings- remove? idk
+
+stroke widths all the same
+THROTTLE- scroll events, debounce everything
