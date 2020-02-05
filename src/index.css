@@ -1,13 +1,87 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Roboto+Slab:100&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+/* use vw, but rem fallbacks*/
 body {
+  background-color: black;
+  font-family: din;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: grayscale
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+html, body, #root{
+  margin: 0;
+  height: 100%;
+  /* font-size: 1vw; */
+}
+
+body{
+  overflow: hidden;
+}
+
+a {
+  color: white;
+  text-decoration: none
+}
+
+@font-face {
+  font-family: "din";
+  src: url("./assets/fonts/DINCondensed-Bold.woff") format("woff")
+}
+
+@font-face {
+  font-family: "dinAlt";
+  src: url("./assets/fonts/DINAlternate-Bold.woff") format("woff")
+}
+
+.white {
+  color: white
+}
+
+.black {
+  color: black
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: hotpink;
+}
+
+.main {
+  position: relative;
+  width: 200px;
+  height: 50px;
+  background: #272727;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 2px solid white;
+  overflow: hidden;
+}
+
+.trails-main {
+  overflow: hidden;
+}
+
+.trails-text {
+  /* position: relative; */
+  /* width: 100%; */
+  height: 80px;
+  /* font-size: 5em; */
+  /* font-weight: 800; */
+  will-change: transform, opacity;
+  overflow: hidden;
+}
+
+.trails-text > div {
+  overflow: hidden;
 }

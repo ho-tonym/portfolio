@@ -1,0 +1,268 @@
+// default size is rem
+// @import "../../../assets/style/variables.sass"
+.projectPage
+  background-color: white
+  position: relative
+  transition: background-color 1.5s ease-out
+  overflow: auto
+  h1
+    color: #E93F47
+    text-transform: uppercase
+    font-family: din
+    white-space: nowrap
+    text-align: left
+    margin: 0
+    font-size: 6rem
+  h2
+    margin: 0
+    text-align: right
+    font-size: 3rem
+  p
+    font-family: "dinAlt"
+  hr
+    color: black
+    background-color: black
+    height: 5
+    width: 100%
+    margin: 0
+
+.xButton
+  all: unset
+  z-index: 100
+  position: fixed
+  color: black
+  top: 1rem
+  left: 48%
+  font-size: 40px
+  text-align: center
+
+.zero
+  position: relative
+  div
+    position: absolute
+    bottom: 15%
+    font-size: 9rem
+    margin-left: 13%
+    h1
+      color: black
+      text-transform: uppercase
+      font-family: din
+      font-size: 16vw
+      white-space: nowrap
+      text-align: left
+      margin: 0
+    p
+      margin-left: 0.2rem
+      font-family: 'Roboto Mono', monospace
+      white-space: nowrap
+      text-align: left
+      font-size: 3vw
+  img
+    object-fit: cover
+    width: 100vw
+    height: 100vh
+
+.one
+  position: relative
+  margin: 8% 13%
+  div:nth-child(1)
+    display: flex
+    align-items: center
+    justify-content: space-between
+  p
+    font-size: 5vw
+    line-height: 7vw
+
+.backgroundSection
+  background: #E0AFAF
+  height: 20rem
+  // height: 50vh
+
+.websiteImages
+  background-color: #F2F2F2
+  div
+    padding: 8% 0%
+    display: flex
+    flex-direction: column
+    align-items: center
+    img
+      box-shadow: 0rem 0.375rem 0.25rem rgba(0, 0, 0, 0.25)
+      margin: 3% 0%
+      border: 1rem solid white
+      max-width: 1200px
+      height: auto
+      width: 74%
+
+.second
+  position: relative
+  margin: 6% 11%
+  padding-bottom: 4%
+  div:nth-child(1)
+    display: flex
+    align-items: center
+    justify-content: space-between
+  div:nth-child(2)
+    padding-top: 5vw
+    display: flex
+    justify-content: space-between
+
+.third
+  position: relative
+  margin: 6% 11%
+  div:nth-child(1)
+    display: flex
+    align-items: center
+    justify-content: space-between
+  div:nth-child(2)
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    span
+      margin: 1rem 0rem
+      position: relative
+      display: flex
+      align-items: center
+      justify-content: space-between
+      h3, p
+        margin: 0
+        color: black
+
+.colors
+  background-color: blue
+  border-radius: 50%
+  height: 9vw
+  width: 9vw
+  box-shadow: 0rem 0.375rem 0.25rem rgba(0, 0, 0, 0.25)
+  display: inline-block
+  p
+    font-family: "din"
+    position: relative
+    top: 9.5vw
+    text-align: center
+    font-size: 2vw
+
+.empty
+  height: 500px
+
+.nextProject
+  background-color: white
+  height: 100vh
+  width: 100%
+  display: flex
+  left: 0
+  right: 0
+  margin: auto
+  justify-content: center
+  align-items: center
+  a
+    position: absolute
+    font-size: 6.5rem
+    h1
+      transition: 0.3s ease-out
+      color: black
+      cursor: pointer
+      text-transform: uppercase
+      font-family: din
+      text-align: center
+      &:hover
+        color: #E93F47
+
+@media (min-width: 1200px)
+  .projectPage
+    h1
+      font-size: 7vw
+    h2
+      font-size: 4vw
+  .zero div
+    h1
+      font-size: 8vw
+    p
+      font-size: 1.7vw
+  .one
+    p
+      font-size: 1.4vw
+      line-height: 3vw
+  .websiteImages
+    div
+      padding: 4% 0%
+  .third
+    h3
+      font-size: 2vw
+    p
+      font-size: 1.4vw
+    div:nth-child(2)
+      span
+        margin: 1vw 0
+
+@media (max-width: 1199px) and (min-width: 769px)
+  .projectPage
+    h1
+      font-size: 9vw
+    h2
+      font-size: 4vw
+  .zero div
+    h1
+      font-size: 10vw
+    p
+      font-size: 2vw
+  .one
+    p
+      font-size: 1.9vw
+      line-height: 4vw
+  .third
+    h3
+      font-size: 2.2vw
+    p
+      font-size: 1.6vw
+
+@media (max-width: 768px) and (min-width: 501px)
+  .projectPage
+    h1
+      font-size: 9vw
+    h2
+      font-size: 5vw
+  .zero div
+    h1
+      font-size: 13vw
+  .one
+    p
+      font-size: 2.5vw
+      line-height: 5vw
+  .third
+    h3
+      font-size: 3.8vw
+    p
+      font-size: 2.5vw
+
+
+@media (max-width: 500px)
+  .projectPage
+    h1
+      font-size: 10vw
+    h2
+      font-size: 6vw
+  .zero div
+    h1
+      font-size: 14vw
+    p
+      font-size: 3vw
+  .one
+    p
+      font-size: 3vw
+      line-height: 7vw
+  .third
+    h3
+      font-size: 3.8vw
+    p
+      font-size: 2.8vw
+    div:nth-child(2)
+      span
+        margin: 3vw 0
+
+// or vs breakpoints
+
+//KEY IS 1VW in html - for font-size
+// then use rem units
+
+//top, rkight, bottom, left
+//top, bottom / left,right

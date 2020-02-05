@@ -1,0 +1,185 @@
+@import "../../assets/style/variables.sass"
+
+h1
+	font-size: 4rem
+
+.overlay
+	height: 0%
+	width: 100%
+	position: fixed
+	z-index: 200
+	top: 0
+	left: 0
+	background-color: #E8777C
+	overflow-x: hidden
+	display: flex
+	align-items: flex-start
+	justify-content: center
+	align-self: center
+	flex-direction: column
+	overflow: hidden
+
+.overlayContent
+	margin-left: 17vw
+	margin-right: 17vw
+  overflow: hidden
+	//fix
+  height: 80px
+	p:nth-of-type(1)
+		color: black
+		opacity: 23%
+		font-size: 2rem
+
+#contact
+	display: flex
+	align-items: center
+	justify-content: flex-start
+	flex-wrap: nowrap
+	img
+		padding-right: 1rem
+		height: 1.5rem
+		width: auto
+	p
+		opacity: 1
+		font-family: 'dinAlt'
+		font-size: 1.14rem
+		color: white
+
+.projects
+	all: unset
+	color: black
+	font-size: 1.1rem
+	font-family: 'dinAlt'
+	position: absolute
+	top: 1.3rem
+	left: $margin
+
+.closeBtn
+	all: unset
+	color: black
+	position: absolute
+	font-size: 40px
+	top: 1rem
+	right: $margin
+
+.closeBtn, #contact
+	cursor: pointer
+
+.rightLinks
+	z-index: 100
+	color: white
+	display: flex
+	flex-direction: column
+	align-items: center
+	justify-content: space-between
+	// height: 12rem - without 002 number
+	height: 11rem
+	position: fixed
+	top: 0
+	right: 0
+	// margin: 1.2rem 1.2rem
+	margin-right: 1.5rem
+	// margin-top: 7.6rem
+	// margin-right: 2vw
+	margin-top: 17vh
+	// transform: translate3d(0%, 0%, 0px)
+
+.numberSVG
+	top: 1.2rem
+	right: 1.2rem
+	position: fixed
+// 1.2, 2.7 - diff = 1.5
+.changingNumberSVG
+	z-index: -100
+	top: 4.2rem
+	right: 1.2rem
+	position: fixed
+	path:nth-child(1)
+		animation: stroke-anim-full 2s ease forwards
+
+.botLinks
+	font-family: 'Roboto Mono', monospace
+	position: fixed
+	bottom: 0
+	right: 0
+	z-index: 100
+	display: flex
+	justify-content: center
+	align-items: center
+	flex-wrap: nowrap
+	flex-direction: row
+	p
+	  font-size: 12px
+	  display: inline-block
+	  margin: 1.2rem 1.2rem
+
+@keyframes stroke-anim-full
+	to
+		stroke-dashoffset: 0
+//
+// @keyframes stroke-anim-empty
+// 	from
+// 		stroke-dashoffset: 0
+// 	to
+// 		stroke-dashoffset: 166.91
+
+.about
+	writing-mode: vertical-rl
+	cursor: pointer
+	font-family: 'Roboto Mono', monospace
+	p
+		font-size: 12px
+
+.line
+  border-left: 0.09rem solid white
+  height: 5rem
+	position: fixed
+
+.work
+	cursor: pointer
+	writing-mode: vertical-rl
+	font-family: 'Roboto Mono', monospace
+	p
+		font-size: 12px
+
+@media (max-height: 627px)
+	.rightLinks
+		margin-top: 6.7rem
+
+		// margin-top: 17vh
+
+@media (max-width: 992px)
+	h1
+		font-size: 3rem
+	.overlayContent
+		p:nth-of-type(1)
+			width: 70%
+
+@media (max-width: 768px)
+	.overlayContent
+		p:nth-of-type(1)
+			width: 85%
+			font-size: 1.5em
+	#contact
+		img
+			height: 1rem
+			width: auto
+		p
+			font-size: 1rem
+
+@media (max-width: 576px)
+	h1
+		font-size: 2rem
+	.overlayContent
+		p:nth-of-type(1)
+			width: 85%
+			font-size: 1.5em
+	#contact
+		img
+			height: 1rem
+			width: auto
+		p
+			font-size: 1rem
+
+// array - empty spaces in svg path
+//offset- moves where the empty spaces are
