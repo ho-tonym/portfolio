@@ -25,3 +25,6 @@ d3-easings- remove? idk
 
 stroke widths all the same
 THROTTLE- scroll events, debounce everything
+
+hide scrollbars
+extra distance on scrollbar- fix

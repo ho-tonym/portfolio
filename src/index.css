@@ -17,9 +17,26 @@ html, body, #root{
   /* font-size: 1vw; */
 }
 
-body{
+body {
   overflow: hidden;
 }
+/*
+#root {
+    overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+#root::-webkit-scrollbar {
+
+    width: 0;
+    height: 0;
+} */
+
+
+/* .element::-webkit-scrollbar { width: 0 !important }
+.element { overflow: -moz-scrollbars-none; }
+.element { -ms-overflow-style: none; } */
+
 
 a {
   color: white;

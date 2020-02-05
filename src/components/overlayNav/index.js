@@ -141,16 +141,20 @@ const OverlayNav = () => {
       </section>
 
       <animated.section className={styles.botLinks} style={bLinkStyle}>
-        <p>
-          <a href="https://github.com/ho-tonym" style={{color: textColor}}>
-            github
-          </a>
-        </p>
-        <p>
-          <a href="https://www.linkedin.com/in/tony-ho-9984b971/" style={{color: textColor}}>
-            linkedin
-          </a>
-        </p>
+        <a href="https://github.com/ho-tonym" style={{color: textColor}}>
+          <div>
+            <p>
+              github
+            </p>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com/in/tony-ho-9984b971/" style={{color: textColor}}>
+          <div>
+            <p>
+              linkedin
+            </p>
+          </div>
+        </a>
         <Email color={textColor}/>
       </animated.section>
     </>

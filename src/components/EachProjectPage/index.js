@@ -15,21 +15,6 @@ const EachProjectPage = (props) => {
       // window.removeEventListener('scroll', handleScroll);
     }
   }, [])
-  //
-  // const body = document.body;
-  // const html = document.documentElement;
-  // const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
-  // function handleScroll() {
-  //    const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight,  html.scrollHeight, html.offsetHeight);
-  //    const windowBottom = windowHeight + window.pageYOffset;
-  //    // console.log(windowBottom/docHeight)
-  //    // if (windowBottom >= docHeight) {
-  //    //    console.log("bot")
-  //    // } else {
-  //    //   console.log("not bot")
-  //    // }
-  //    windowBottom/docHeight
-  //  }
 
   const [open, toggle] = useState(false)
   //uWu
