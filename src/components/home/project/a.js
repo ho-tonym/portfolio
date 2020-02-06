@@ -2,15 +2,17 @@ import React, {useState, useEffect, useRef, useCallback} from 'react';
 import styles from './project.module.css'
 import projectInfo from '../../../assets/data/projectInfo'
 import { useStateValue } from "../../../MyProvider"
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { useSpring, animated, config, useTransition } from 'react-spring'
-import { titleConfig, imgConfig, delayAnimTime, imageAnimTime } from "../../utils"
+import { myConfig, delayAnimTime, imageAnimTime } from "../../utils"
 
 function Project() {
-  const {currentProj} = useStateValue();
+  const history = useHistory()
+  const {currentProj, toggleRLinks} = useStateValue();
   const {backgroundColor, alt, src, name, link} = projectInfo[currentProj]
   const isInitialMount = useRef(true);
   const [imageOpen, toggleImage] = useState(false)
+
   useEffect(() => {
     if (isInitialMount.current) {
       isInitialMount.current = false;
@@ -20,7 +22,7 @@ function Project() {
       setTimeout(() => toggleImage(true), imageAnimTime)
       setTimeout(() => {
         nameRef.current = name;
-      }, delayAnimTime)
+      }, 0)
     }
   }, [currentProj]);
 
@@ -31,12 +33,13 @@ function Project() {
 
   const widthImageProps = useSpring({
     transform: imageOpen ? "translate3d(0px, 0%, 0px)" : "translate3d(0px, -100%, 0px)",
-    config: imgConfig
+    config: myConfig
   })
 
 
   //from, to? in useSpring
   useEffect(() => {
+    toggleRLinks(true)
     set(['1'])
     nameRef.current = name;
     toggleImage(true)
@@ -45,40 +48,42 @@ function Project() {
   const nameRef = useRef(name)
   const [items, set] = useState([])
   const transitions = useTransition(items, null, {
+    config: myConfig,
     from: { transform: "translate3d(0px, 50%, 0px)"},
-
-    // leave: { transform: "translate3d(0px, -130%, 0px)" },
-    // enter: [
-    //   { transform: "translate3d(0px, 50%, 0px)" },
-    //   { transform: "translate3d(0px, -45%, 0px)" }
-    // ]
-    enter: [{ transform: "translate3d(0px, -45%, 0px)" }],
-    leave: [
-      { transform: "translate3d(0px, -130%, 0px)" },
-      { transform: "translate3d(0px, -130%, 0px)" }
-    ]
+    enter: { transform: "translate3d(0px, -45%, 0px)" },
+    leave: { transform: "translate3d(0px, -130%, 0px)" }//diff animations to play before exiting
   })
 
   const titleAnimation = useCallback(() => {//function gets called multiple times
     ref.current.map(clearTimeout)
     ref.current = []
-    set([])
-    ref.current.push(setTimeout(() => set(['1']), delayAnimTime))
-    // ref.current.push(setTimeout(() => set(['1']), delayAnimTime))
+    set([])//leave
+    ref.current.push(setTimeout(() => set(['1']), delayAnimTime))//brings it back- (delay)when to bring it back
   }, [])
+// style={widthImageProps}
+
+  function delayedRedirect(){
+    history.push(link)
+  }
 
   return (
     <div className={styles.projects} style={{backgroundColor: backgroundColor}}>
         <span className={styles.image} style={{zIndex: "1"}}>
-          <Link to={link}>
-            <animated.img style={widthImageProps} alt={alt} src={src} />
-          </Link>
+          <animated.img alt={alt} src={src}
+            onClick={() => {
+              toggleRLinks(false)
+              delayedRedirect()
+            }}/>
         </span>
 
         {transitions.map(({ item, props: { transform, ...rest }, key }) => (
           <animated.span className={styles.title} key={key} style={rest} >
-            <animated.h1 style={{ transform: transform }}>
-              <Link to={link}>{nameRef.current}</Link>
+            <animated.h1 style={{ transform: transform }}
+              onClick={() => {
+                toggleRLinks(false)
+                delayedRedirect()
+              }}>
+              {nameRef.current}
             </animated.h1>
           </animated.span>
         ))}

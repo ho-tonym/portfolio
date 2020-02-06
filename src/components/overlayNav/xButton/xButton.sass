@@ -1,0 +1,26 @@
+.closeBtn
+  all: unset
+  color: black
+  position: absolute
+  top: 0.45rem
+  right: 0.2rem
+  cursor: pointer
+
+.closeBtn:hover
+	line:nth-child(2)
+    animation: stroke-anim-full 0.6s ease-in-out forwards
+	line:nth-child(1)
+    animation: stroke-anim-full 0.6s ease-in-out 0.2s forwards
+
+
+@keyframes stroke-anim-full
+	50%
+		stroke-dashoffset: 122.28
+	100%
+		stroke-dashoffset: 244.56
+
+@keyframes stroke-anim-full
+	50%
+		stroke-dashoffset: 122.28
+	100%
+		stroke-dashoffset: 244.56

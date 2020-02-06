@@ -12,6 +12,7 @@ import { useStateValue } from "../../MyProvider"
 import { myConfig, overLayConfig } from "../utils"
 import Email from '../shared/email'
 import _ from 'lodash'
+import CloseBtn from './xButton'
 
 const OverlayNav = () => {
   let location = useLocation();
@@ -44,7 +45,7 @@ const OverlayNav = () => {
      // }
      setLineHeight(5 * windowBottom/docHeight)
      // windowBottom/docHeight
-     console.log(windowBottom/docHeight);
+     // console.log(windowBottom/docHeight);
    },200)
 
   useEffect(() => {
@@ -87,6 +88,7 @@ const OverlayNav = () => {
   // })
   //
 // {color: textColor}
+
   return (
     <>
       <animated.div {...bind} className={styles.overlay} style={animProps}>
@@ -103,10 +105,10 @@ const OverlayNav = () => {
           </div>
         </div>*/}
 
-        <button type="button" className={styles.closeBtn}
-          onClick={() => {
-            toggle(false)
-          }}>&times;</button>
+        <CloseBtn
+          toggle={toggle}
+          color="#000"
+          />
         <button type="button" className={styles.projects}>Projects</button>
 
         <div className={styles.overlayContent}>
