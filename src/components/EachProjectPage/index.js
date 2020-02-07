@@ -4,8 +4,10 @@ import styles from './projectPage.module.css'
 import { useStateValue } from "../../MyProvider"
 import { Link } from 'react-router-dom'
 import { useSpring, animated } from 'react-spring'
+import CloseBtn from '../shared/CloseBtn'
+import CustomScrollBar from './CustomScrollBar'
 
-const EachProjectPage = (props) => {
+const EachProjectPage = () => {
   useEffect(() => {
     // window.addEventListener('scroll', handleScroll);
     document.body.style.overflow = "auto";
@@ -45,9 +47,18 @@ const EachProjectPage = (props) => {
   }
 
   return (
+    <>
+    <CustomScrollBar />
     <div className={projectPage}>
       <Link to='/'>
-        <button className={xButton}>&times;</button>
+        <CloseBtn color="#000"
+          myStyle={{
+            position: "fixed",
+            top: "1rem",
+            left: "48%",
+            zIndex: 100
+          }}
+        />
       </Link>
         <section className={zero}>
           <img alt={alt} src={src} />
@@ -121,6 +132,7 @@ const EachProjectPage = (props) => {
           <Link to={'/projects/donuts'}><h1>NEXT PROJECT</h1></Link>
         </section>
     </div>
+    </>
   )
 }
 //if scrolldetect isnt mounted, we are on project page then overflow: auto

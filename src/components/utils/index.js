@@ -5,6 +5,9 @@ import * as easings from 'd3-ease'
 // console.log(easing(0.5)); // 0.3125
 // console.log(easing(1.0)); // 1.0
 // cubic-bezier(0.645, 0.045, 0.355, 1);
+export const numSvgAnimTime = 1000
+export const numSvgAnimTime2 = 1100
+//has to be a bit after numSvgAnimTime
 
 export const myConfig = {
   mass: 1,
@@ -13,15 +16,22 @@ export const myConfig = {
   // easing: easing
 }
 // easeInOutCubic
-//duration based - not spring
+// duration based - not spring
 export const overLayConfig = {
   mass: 1,
   tension: 300,
   friction: 60,
   easing: easings.easeCubicInOut,
-  duration: 800
+  duration: 800,
 }
 
+export const numConfig = {
+  mass: 1,
+  tension: 300,
+  friction: 60,
+  easing: easings.easeCubicInOut,
+  duration: numSvgAnimTime,
+}
 
 // export const imgConfig = {
 //   mass: 1,

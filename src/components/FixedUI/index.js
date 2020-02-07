@@ -1,10 +1,79 @@
-import React from 'react'
 import PropTypes from 'prop-types'
-import styles from './FixedUI.module.css'
+import React, { useState, useEffect } from 'react'
+import { useSpring, useTrail, animated } from 'react-spring'
+import { useLocation } from "react-router-dom";
+import _ from 'lodash'
+import { useStateValue } from "../../MyProvider"
+import projectInfo from "../../assets/data/projectInfo"
+// import
 
-const FixedUI = (props) => {
+import { myConfig, overLayConfig } from "../utils"
+import styles from './FixedUI.module.css'
+import Number from './svgNumbers/number'
+// import CloseBtn from '../shared/xButton'
+import Email from '../shared/email'
+
+const FixedUI = () => {
+  const location = useLocation();
+  const [textColor, setTextColor] = useState("white")
+  const { showRLinks, toggleRLinks, toggleOverlayNav, lineHeight, setLineHeight } = useStateValue();
+
+  useEffect(() => {
+    if (location.pathname === '/') {
+      setTextColor("white")
+      setLineHeight(5)
+    }else{
+      setTextColor("black")
+    }
+  }, [location.pathname])
+
+  useEffect(() => {
+    toggleRLinks(false)
+  },[])
+
+  const bLinkStyle = useSpring({
+    bottom: showRLinks ? "0rem" : "-2.5rem",
+    config: overLayConfig,
+    // delay: 100,
+    //if delay is not commented out, it doesnt move the bottom
+    //bottomLink when i load botlink first
+  })
+  const rLinkStyle = useSpring({
+    right: showRLinks ? "0rem" : "-2.5rem",
+    config: overLayConfig,
+  })
   return (
-    <div />
+    <>
+      <section className={styles.rightLinks}>
+        {location.pathname === '/'
+          ? <Number color={textColor} />
+          : null}
+        <animated.div style={rLinkStyle}>
+          <span className={styles.about} style={{ color: textColor }} onClick={() => toggleOverlayNav(true)}><p>about</p></span>
+          <span className={styles.work} style={{ color: textColor }}><p>work</p></span>
+        </animated.div>
+        <span className={styles.line} style={{ borderColor: textColor, height: `${lineHeight}rem`}} />
+        <span className={styles.line} style={{ borderColor: "#b3b3b3", zIndex: 100 }} />
+      </section>
+
+      <animated.section className={styles.botLinks} style={bLinkStyle}>
+        <a href="https://github.com/ho-tonym" style={{ color: textColor }}>
+          <div>
+            <p>
+              github
+            </p>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com/in/tony-ho-9984b971/" style={{ color: textColor }}>
+          <div>
+            <p>
+              linkedin
+            </p>
+          </div>
+        </a>
+        <Email color={textColor} />
+      </animated.section>
+    </>
   )
 }
 

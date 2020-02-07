@@ -5,12 +5,13 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import OverlayNav from '../overlayNav'
 import TransitionOverlay from '../TransitionOverlay'
 import SlowScroll from "../home/SlowScroll"
+import FixedUI from "../FixedUI"
 
 function App() {
   return (
     <MyProvider>
       <Router>
-
+        <FixedUI />
         <OverlayNav />
         {/*<SlowScroll />*/}
         {/*<TransitionOverlay />*/}
