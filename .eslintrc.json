@@ -43,7 +43,13 @@
       "no-plusplus": "off",
       "no-shadow": "off",
       "no-nested-ternary":"off",
-      "import/prefer-default-export":"off"
+      "import/prefer-default-export":"off",
+      "no-tabs": "off",
+      "indent": "off",
+      "linebreak-style": "off",
+      "react/jsx-indent-props": "off",
+      "react/jsx-indent": "off",
+      "no-unused-expressions": ["error", { "allowTernary": true }]
     },
     "parser": "babel-eslint"
 }

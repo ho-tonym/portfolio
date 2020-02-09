@@ -9,63 +9,52 @@ import CustomScrollBar from './CustomScrollBar'
 
 const EachProjectPage = () => {
   useEffect(() => {
-    // window.addEventListener('scroll', handleScroll);
     document.body.style.overflow = "auto";
-    toggle(true)
-    return () => {
-      document.body.style.overflow = "hidden"
-      // window.removeEventListener('scroll', handleScroll);
-    }
   }, [])
 
-  const [open, toggle] = useState(false)
-  //uWu
-  // const animProps = useSpring({
-  //   opacity: open ? 1 : 0,
-  //   // x: open ? 0 : 20,
-  //   height: open ? "8.4rem" : "0rem",
-  // })
-                // style={animProps}
-  const {currentProj, setProj} = useStateValue();
-  const {backgroundColor, alt, src, nameArray,
+  const { currentProj, setAnimValue, animValue } = useStateValue();
+  const { backgroundColor, alt, src, nameArray,
     colorsArray, description,
     githubLink, hostLink,
-    firstImages, secondImages
+    firstImages, secondImages,
   } = projectInfo[currentProj]
-  const {projectPage, zero, one, second, third, backgroundSection, websiteImages, colors, xButton} = styles
+  const { projectPage, zero, one,
+    second, third, backgroundSection,
+    websiteImages, colors,
+  } = styles
 
-
-  const nextProj = () => {
-    if(currentProj + 1 > projectInfo.length - 1) {
-      setProj(0)
-      return `/${projectInfo[0].link}`
-    }
-    else {
-      setProj(currentProj + 1)
-      return `/${projectInfo[currentProj + 1].link}`
-    }
-  }
+  // const nextProj = () => {
+  //   if(currentProj + 1 > projectInfo.length - 1) {
+  //     setProj(0)
+  //     return `/${projectInfo[0].link}`
+  //   }
+  //   else {
+  //     setProj(currentProj + 1)
+  //     return `/${projectInfo[currentProj + 1].link}`
+  //   }
+  // }
 
   return (
     <>
     <CustomScrollBar />
     <div className={projectPage}>
-      <Link to='/'>
-        <CloseBtn color="#000"
+      <Link to="/">
+        <CloseBtn
+          color="#000"
           myStyle={{
             position: "fixed",
             top: "1rem",
             left: "48%",
             zIndex: 100
           }}
+          animFunc={() => setAnimValue({ ...animValue, rLinks: true })}
         />
       </Link>
         <section className={zero}>
           <img alt={alt} src={src} />
           <div>
             {nameArray.map(n => (
-              <animated.h1
-                key={n}>{n}</animated.h1>
+              <animated.h1 key={n}>{n}</animated.h1>
             ))}
             <p>website</p>
           </div>
@@ -77,7 +66,7 @@ const EachProjectPage = () => {
           </div>
           <p>{description}</p>
         </section>
-        <section className={backgroundSection} style={{backgroundColor}}></section>
+        <section className={backgroundSection} style={{ backgroundColor }} />
         <section className={websiteImages}>
           <div>
             {firstImages.map(i => <img key={i.alt} alt={i.alt} src={i.pic} />)}
@@ -89,12 +78,18 @@ const EachProjectPage = () => {
             <h2>COLORS</h2>
           </div>
           <div>
-            {colorsArray.map(c => <span key={c}className={colors} style={{backgroundColor : c}}><p>{c}</p></span>)}
+            {colorsArray.map(c => (
+              <span key={c} className={colors} style={{ backgroundColor: c }}>
+                <p>{c}</p>
+              </span>
+            ))}
           </div>
         </section>
         <section className={websiteImages}>
           <div>
-            {secondImages.map(i => <img key={i.alt} alt={i.alt} src={i.pic} />)}
+            {secondImages.map(i => (
+              <img key={i.alt} alt={i.alt} src={i.pic} />
+            ))}
           </div>
         </section>
         <section className={third}>
@@ -129,11 +124,13 @@ const EachProjectPage = () => {
           </div>
         </section>
         <section className={styles.nextProject}>
-          <Link to={'/projects/donuts'}><h1>NEXT PROJECT</h1></Link>
+          <Link to={'/projects/donuts'}>
+            <h1>NEXT PROJECT</h1>
+          </Link>
         </section>
     </div>
     </>
   )
 }
-//if scrolldetect isnt mounted, we are on project page then overflow: auto
+
 export default EachProjectPage

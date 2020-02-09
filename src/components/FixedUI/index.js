@@ -16,7 +16,7 @@ import Email from '../shared/email'
 const FixedUI = () => {
   const location = useLocation();
   const [textColor, setTextColor] = useState("white")
-  const { showRLinks, toggleRLinks, toggleOverlayNav, lineHeight, setLineHeight } = useStateValue();
+  const { animValue, setAnimValue, lineHeight, setLineHeight } = useStateValue();
 
   useEffect(() => {
     if (location.pathname === '/') {
@@ -27,19 +27,17 @@ const FixedUI = () => {
     }
   }, [location.pathname])
 
-  useEffect(() => {
-    toggleRLinks(false)
-  },[])
+  // useEffect(() => {
+  //   toggleRLinks(false)
+  // },[])
 
   const bLinkStyle = useSpring({
-    bottom: showRLinks ? "0rem" : "-2.5rem",
+    bottom: animValue.rLinks ? "0rem" : "-2.5rem",
     config: overLayConfig,
     // delay: 100,
-    //if delay is not commented out, it doesnt move the bottom
-    //bottomLink when i load botlink first
   })
   const rLinkStyle = useSpring({
-    right: showRLinks ? "0rem" : "-2.5rem",
+    right: animValue.rLinks ? "0rem" : "-2.5rem",
     config: overLayConfig,
   })
   return (
@@ -49,10 +47,12 @@ const FixedUI = () => {
           ? <Number color={textColor} />
           : null}
         <animated.div style={rLinkStyle}>
-          <span className={styles.about} style={{ color: textColor }} onClick={() => toggleOverlayNav(true)}><p>about</p></span>
+          <span className={styles.about} style={{ color: textColor }}
+            onClick={() => setAnimValue({...animValue, overlay: true})}>
+            <p>about</p></span>
           <span className={styles.work} style={{ color: textColor }}><p>work</p></span>
         </animated.div>
-        <span className={styles.line} style={{ borderColor: textColor, height: `${lineHeight}rem`}} />
+        <span className={styles.line} style={{ borderColor: textColor, height: `${lineHeight}rem` }} />
         <span className={styles.line} style={{ borderColor: "#b3b3b3", zIndex: 100 }} />
       </section>
 

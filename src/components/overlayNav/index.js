@@ -7,18 +7,19 @@ import styles from './overlayNav.module.css'
 import emailImg from '../../assets/images/email.png'
 import useMeasure from './useMeasure'
 import { useStateValue } from "../../MyProvider"
-import CloseBtn from '../shared/xButton'
+import CloseBtn from '../shared/CloseBtn'
 
 const OverlayNav = () => {
-  const { showOverlayNav, toggleOverlayNav } = useStateValue();
+  const { animValue, setAnimValue } = useStateValue();
   const [bind, { height }] = useMeasure()
-  const animProps = useSpring({ height: showOverlayNav ? "100%" : "0%" })
+  const animProps = useSpring({ height: animValue.overlay ? "100%" : "0%" })
 
   return (
     <>
       <animated.div {...bind} className={styles.overlay} style={animProps}>
         <CloseBtn
-          toggle={toggleOverlayNav}
+          animValue={animValue}
+          animFunc={() => setAnimValue({ ...animValue, overlay: false })}
           color="#000"
         />
         <button type="button" className={styles.projects}>Projects</button>

@@ -1,4 +1,14 @@
+- useTtransition first arg is the thing that it looks at to change, second needs a key for each array item, or obj, else it can be null. so if first arg isnt a bool you need it
 
+- the item in
+{transitions.map(({ item, props, key }) => (
+	is whatever value is in here   
+	const [titleAnim, setTitleAnim] = useState([])
+setTitleAnim(['1'])
+- also it has to be called item
+
+
+================
 - to get the length of the path using js to play with the svg
 
 import React, {useEffect} from 'react';
@@ -37,3 +47,32 @@ Debouncing will bunch a series of sequential calls to a function into a single c
 
 if i scroll @ home, it will change if i click in quickly
 -scroll, clickin (fast)
+
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    }
+  },[])
+
+  const body = document.body;
+  const html = document.documentElement;
+  const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
+  const handleScroll =
+	_.throttle(() => {
+     const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight,  html.scrollHeight, html.offsetHeight);
+     const windowBottom = windowHeight + window.pageYOffset;
+     // console.log(windowBottom/docHeight)
+     // if (windowBottom >= docHeight) {
+     //    console.log("bot")
+     // } else {
+     //   console.log("not bot")
+     // }
+     setLineHeight(5 * windowBottom/docHeight)
+     // windowBottom/docHeight
+     // console.log(windowBottom/docHeight);
+   },200)
+
+
+use-transition -

@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {lazy, Suspense} from 'react';
 // import { HashRouter as Router, Route, Switch } from 'react-router-dom'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { useLocation } from "react-router-dom";
 import Home from '../home'
 import EachProjectPage from '../EachProjectPage'
 import Page404 from '../page404'
-import { useLocation } from "react-router-dom";
 
 const routes = [
   {
@@ -31,11 +31,6 @@ const routes = [
     exact: true,
     component: EachProjectPage,
   },
-  // {
-  //     name: "Project Details",
-  //     path: "/:projectId",
-  //     component: ProjectDetails
-  // },
   {
     name: "Page404",
     component: Page404,

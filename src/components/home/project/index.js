@@ -1,95 +1,87 @@
-import React, {useState, useEffect, useRef, useCallback} from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { Link, useHistory } from 'react-router-dom'
+import { useSpring, animated, useTransition } from 'react-spring'
 import styles from './project.module.css'
 import projectInfo from '../../../assets/data/projectInfo'
 import { useStateValue } from "../../../MyProvider"
-import { Link, useHistory } from 'react-router-dom'
-import { useSpring, animated, config, useTransition } from 'react-spring'
 import { myConfig, delayAnimTime, imageAnimTime } from "../../utils"
 
 function Project() {
   const history = useHistory()
-  const {currentProj, toggleRLinks} = useStateValue();
-  const {backgroundColor, alt, src, name, link} = projectInfo[currentProj]
+  const { currentProj, animValue, setAnimValue } = useStateValue();
+  const { backgroundColor, alt, src, name, link } = projectInfo[currentProj]
   const isInitialMount = useRef(true);
-  const [imageOpen, toggleImage] = useState(false)
-
-  useEffect(() => {
-    if (isInitialMount.current) {
-      isInitialMount.current = false;
-    } else {
-      toggleImage(false)
-      titleAnimation()
-      setTimeout(() => toggleImage(true), imageAnimTime)
-      setTimeout(() => {
-        nameRef.current = name;
-      }, 0)
-    }
-  }, [currentProj]);
-
-  // const imgProps = useSpring({
-  //   height: imageOpen ? "50%" : "0%",
-  //   config: imgConfig
-  // })
-
-  const widthImageProps = useSpring({
-    transform: imageOpen ? "translate3d(0px, 0%, 0px)" : "translate3d(0px, -100%, 0px)",
-    config: myConfig
-  })
-
-
-  //from, to? in useSpring
-  useEffect(() => {
-    toggleRLinks(true)
-    set(['1'])
-    nameRef.current = name;
-    toggleImage(true)
-  },[])
   const ref = useRef([])
-  const nameRef = useRef(name)
-  const [items, set] = useState([])
-  const transitions = useTransition(items, null, {
+  const nameRef = useRef(name);
+  nameRef.current = name;
+
+  const transitions = useTransition(animValue.title, null, {
     config: myConfig,
-    from: { transform: "translate3d(0px, 50%, 0px)"},
+    from: { transform: "translate3d(0px, 50%, 0px)" },
     enter: { transform: "translate3d(0px, -45%, 0px)" },
-    leave: { transform: "translate3d(0px, -130%, 0px)" }//diff animations to play before exiting
+    leave: { transform: "translate3d(0px, -130%, 0px)" }// diff animations to play before exiting
   })
 
-  const titleAnimation = useCallback(() => {//function gets called multiple times
+  const titleAnimation = useCallback(() => {// function gets called multiple times
     ref.current.map(clearTimeout)
     ref.current = []
-    set([])//leave
-    ref.current.push(setTimeout(() => set(['1']), delayAnimTime))//brings it back- (delay)when to bring it back
+    setAnimValue({ ...animValue, title: [] })// leave
+    ref.current.push(setTimeout(() => setAnimValue({ ...animValue, title: [nameRef.current] }), delayAnimTime))// brings it back- (delay)when to bring it back
   }, [])
-// style={widthImageProps}
 
-  function delayedRedirect(){
+  function delayedRedirect() {
     history.push(link)
   }
 
+  useEffect(() => {
+    isInitialMount.current ? isInitialMount.current = false : titleAnimation()
+  }, [currentProj]);
+
+  useEffect(() => {
+    document.body.style.overflow = "hidden"
+    setAnimValue({ ...animValue, rLinks: true })
+    setAnimValue({ ...animValue, title: [nameRef.current] })
+  }, [])
+
   return (
-    <div className={styles.projects} style={{backgroundColor: backgroundColor}}>
-        <span className={styles.image} style={{zIndex: "1"}}>
-          <animated.img alt={alt} src={src}
+    <div className={styles.projects} style={{ backgroundColor }}>
+        <span className={styles.image} style={{ zIndex: "1" }}>
+          <animated.img
+            alt={alt}
+            src={src}
             onClick={() => {
-              toggleRLinks(false)
+              setAnimValue({ ...animValue, rLinks: false })
               delayedRedirect()
-            }}/>
+            }}
+          />
         </span>
 
-        {transitions.map(({ item, props: { transform, ...rest }, key }) => (
-          <animated.span className={styles.title} key={key} style={rest} >
-            <animated.h1 style={{ transform: transform }}
+        {transitions.map(({ item: title, props, key }) => (
+          <animated.span className={styles.title} key={key}>
+            <animated.h1 style={{ ...props }}
               onClick={() => {
-                toggleRLinks(false)
+                setAnimValue({ ...animValue, rLinks: false })
                 delayedRedirect()
-              }}>
-              {nameRef.current}
+              }}
+            >
+              {title}
             </animated.h1>
           </animated.span>
         ))}
     </div>
   )
 }
+// {transitions.map(({ item, props: { transform, ...rest }, key }) => (
+//   <animated.span className={styles.title} key={key} style={rest} >
+//     <animated.h1 style={{ transform: transform }}
+//       onClick={() => {
+//         toggleRLinks(false)
+//         delayedRedirect()
+//       }}>
+//       {nameRef.current}
+//     </animated.h1>
+//   </animated.span>
+// ))}
 // <span className={styles.image} style={{"z-index": "0"}}>
 //   <Link to={link}>
 //     <animated.img  alt={alt} src={src} />

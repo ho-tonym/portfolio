@@ -5,10 +5,10 @@ import * as easings from 'd3-ease'
 // console.log(easing(0.5)); // 0.3125
 // console.log(easing(1.0)); // 1.0
 // cubic-bezier(0.645, 0.045, 0.355, 1);
-export const numSvgAnimTime = 1000
-export const numSvgAnimTime2 = 1100
+export const numSvgAnimTime = 1300
+export const numSvgAnimTime2 = 1400
 //has to be a bit after numSvgAnimTime
-
+export const preloaderAnim = 0
 export const myConfig = {
   mass: 1,
   tension: 300,

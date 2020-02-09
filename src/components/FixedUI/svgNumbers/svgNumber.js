@@ -1,57 +1,57 @@
-import React, {useState, useCallback, useEffect, useRef} from 'react';
+import React, { useState, useCallback, useEffect, useRef } from 'react';
+import { animated, useTransition } from 'react-spring'
 import styles from '../FixedUI.module.css'
-import { numConfig, myConfig, numSvgAnimTime2 } from "../../utils"
-import { useSpring, animated, config, useTransition } from 'react-spring'
-// \
+import { numConfig, numSvgAnimTime2 } from "../../utils"
 import { useStateValue } from "../../../MyProvider"
-const Svg = ({ color, show, stroke, d}) => {
-	useEffect(() => {
-		set(['1'])
-	}, [])
-  const ref = useRef([])
+
+const Svg = ({ color, stroke, d }) => {
+	const { currentProj } = useStateValue();
+	const ref = useRef([])
 	const isInitialMount = useRef(true);
-  const { currentProj, setProj } = useStateValue();
-	useEffect(() => {
-		if (isInitialMount.current) {
-			isInitialMount.current = false;
-		} else {
-			svgAnim()
-		}
-	}, [currentProj]);
 	const [items, set] = useState([])
+
+  useEffect(() => set(['1']), [])
+	useEffect(() => {
+		isInitialMount.current ? isInitialMount.current = false : svgAnim()
+	}, [currentProj]);
+
   const transitions = useTransition(items, null, {
     config: numConfig,
-    from: { strokeDashoffset: stroke},
+    from: { strokeDashoffset: stroke },
     enter: { strokeDashoffset: 0 },
-    leave: { strokeDashoffset: stroke }//diff animations to play before exiting
+    leave: { strokeDashoffset: stroke },
   })
 
-	const svgAnim = useCallback(() => {//function gets called multiple times
+	const svgAnim = useCallback(() => {
 		ref.current.map(clearTimeout)
 		ref.current = []
-		set([])//leave
+		set([])
 		ref.current.push(setTimeout(() => set(['1']), numSvgAnimTime2))
-		//brings it back- (delay)when to bring it back
-		//has to be a bit after numSvgAnimTime
 	}, [])
 
 	return (
-		<svg id="changingNumberSVG" className={styles.changingNumberSVG}
-			x="0" y="0"	width="55.2" height="25.574" viewBox="0 0 55.2 25.574">
-			{transitions.map(({ item, props: { strokeDashoffset, ...rest }, key }) => (
-				<animated.path  key={key} style={{ strokeDashoffset }}
-					fill="none" stroke={color} strokeWidth="2" strokeMiterlimit="10"
+		<svg id="changingNumberSVG"
+			className={styles.changingNumberSVG}
+			x="0"
+			y="0"
+			width="55.2"
+			height="25.574"
+			viewBox="0 0 55.2 25.574"
+		>
+			{transitions.map(({ props, key }) => (
+				<animated.path
+					key={key}
+					fill="none"
+					strokeWidth="2"
+					strokeMiterlimit="10"
+					stroke={color}
 					d={d}
+					style={{ ...props }}
 					strokeDasharray={stroke}
 				/>
 			))}
 		</svg>
 	)
 }
-							// strokeDashoffset={show ? 0 : stroke}
-				// strokeDasharray={stroke}
-export default Svg
 
-// Svg.defaultProps = {
-// 	showNumber: true
-// }
+export default Svg

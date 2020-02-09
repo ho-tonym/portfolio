@@ -6,7 +6,7 @@ import ScrollDetect from './ScrollDetect'
 function Home() {
   return (
     <div className={styles.home}>
-      <ScrollDetect/>
+      <ScrollDetect />
       <Project />
     </div>
   )

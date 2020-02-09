@@ -2,8 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styles from './xButton.module.css'
 
-const CloseBtn = ({ toggle, color, myStyle }) => (
-  <button type="button" onClick={() => toggle(false)} className={styles.closeBtn} style={myStyle}>
+const CloseBtn = ({ animFunc, color, myStyle }) => {
+  // console.log(animFunc, animValue, color, myStyle)
+return(
+  <button type="button"
+    onClick={animFunc}
+    className={styles.closeBtn}
+    style={myStyle}
+  >
     <svg
       x="0px" y="0px"
       width="55px" height="55px" viewBox="0 0 55 55"
@@ -25,7 +31,7 @@ const CloseBtn = ({ toggle, color, myStyle }) => (
     </svg>
   </button>
 )
-
+}
 
 CloseBtn.propTypes = {
   color: PropTypes.string
@@ -33,8 +39,8 @@ CloseBtn.propTypes = {
 
 CloseBtn.defaultProps = {
   color: "#fff",
-  myStyle: "",
-  toggle: () => {}
+  myStyle: {},
+  animFunc: () => {},
 }
 // <button type="button" className={styles.closeBtn}
 //   onClick={() => {

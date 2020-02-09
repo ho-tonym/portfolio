@@ -1,21 +1,36 @@
-import React from 'react';
-import Routes from './routes'
+import React, {lazy, Suspense} from 'react';
 import { MyProvider } from '../../MyProvider.js'
 import { BrowserRouter as Router } from 'react-router-dom'
-import OverlayNav from '../overlayNav'
 import TransitionOverlay from '../TransitionOverlay'
 import SlowScroll from "../home/SlowScroll"
-import FixedUI from "../FixedUI"
+import styles from './App.module.css'
+import {preloaderAnim} from '../utils'
+const FixedUI = lazy(() => import("../FixedUI"))
+const OverlayNav = lazy(() => import("../overlayNav"))
+const Routes = lazy(() => (
+  Promise.all([
+    import("./routes"),
+    new Promise(resolve => setTimeout(resolve, preloaderAnim))
+  ])
+  .then(([moduleExports]) => moduleExports)
+))
 
 function App() {
   return (
     <MyProvider>
       <Router>
-        <FixedUI />
-        <OverlayNav />
-        {/*<SlowScroll />*/}
-        {/*<TransitionOverlay />*/}
-        <Routes />
+        <Suspense
+          fallback={(
+            <div className={styles.preloader}>
+              <h1>TONY HO</h1>
+            </div>
+          )}>
+          <FixedUI />
+          <OverlayNav />
+          <Routes />
+            {/*<SlowScroll />*/}
+            {/*<TransitionOverlay />*/}
+        </Suspense>
       </Router>
     </MyProvider>
   );

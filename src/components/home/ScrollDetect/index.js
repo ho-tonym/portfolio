@@ -73,4 +73,3 @@ toggleAnim(false)
 }
 
 export default ScrollDetect
-// Since handler doesn't have access to component function scope this way, things that can be done there are very limited. A more conventional way is to make useEffect callback be executed only once (a counterpart to componentDidMount) and return a function from useEffect (a counterpart to componentWillUnmount). Since same handler is used in the scope of useEffect function, the problem disappears, but another problem is that handler cannot be used together with useState because handler that is used in useEffect is a function that was defined during initial render and isChecked will be always false in its scope. useRef can be used for this purpose instead (a demo):
