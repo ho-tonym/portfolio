@@ -1,11 +1,11 @@
 import React, { useState, useCallback, useEffect, useRef } from 'react';
-import { animated, useTransition } from 'react-spring'
+import { useSpring, animated, useTransition } from 'react-spring'
 import styles from '../FixedUI.module.css'
-import { numConfig, numSvgAnimTime2 } from "../../utils"
+import { numSvgAnim, myConfig } from "../../utils"
 import { useStateValue } from "../../../MyProvider"
 
-const Svg = ({ color, stroke, d }) => {
-	const { currentProj } = useStateValue();
+const Svg = ({ color, stroke, d, numSvgStyle }) => {
+	const { currentProj, animValue } = useStateValue();
 	const ref = useRef([])
 	const isInitialMount = useRef(true);
 	const [items, set] = useState([])
@@ -16,7 +16,7 @@ const Svg = ({ color, stroke, d }) => {
 	}, [currentProj]);
 
   const transitions = useTransition(items, null, {
-    config: numConfig,
+    config: numSvgAnim.numConfig,
     from: { strokeDashoffset: stroke },
     enter: { strokeDashoffset: 0 },
     leave: { strokeDashoffset: stroke },
@@ -26,12 +26,13 @@ const Svg = ({ color, stroke, d }) => {
 		ref.current.map(clearTimeout)
 		ref.current = []
 		set([])
-		ref.current.push(setTimeout(() => set(['1']), numSvgAnimTime2))
+		ref.current.push(setTimeout(() => set(['1']), numSvgAnim.secondDelay))
 	}, [])
 
 	return (
-		<svg id="changingNumberSVG"
+		<animated.svg id="changingNumberSVG"
 			className={styles.changingNumberSVG}
+			style={{ ...numSvgStyle }}
 			x="0"
 			y="0"
 			width="55.2"
@@ -50,7 +51,7 @@ const Svg = ({ color, stroke, d }) => {
 					strokeDasharray={stroke}
 				/>
 			))}
-		</svg>
+		</animated.svg>
 	)
 }
 

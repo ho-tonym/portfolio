@@ -34,7 +34,9 @@ return(
 }
 
 CloseBtn.propTypes = {
-  color: PropTypes.string
+  color: PropTypes.string,
+  myStyle: PropTypes.object,
+  animFunc: PropTypes.func,
 };
 
 CloseBtn.defaultProps = {
@@ -42,21 +44,5 @@ CloseBtn.defaultProps = {
   myStyle: {},
   animFunc: () => {},
 }
-// <button type="button" className={styles.closeBtn}
-//   onClick={() => {
-//     toggle(false)
-//   }}>&times;</button>
-//
 
 export default CloseBtn
-// <svg x="0px" y="0px" id="mark" className={styles.closeBtn}
-//    width="55.2px" height="25.574px" viewBox="0 0 55.2 25.574">
-// <line fill="none" stroke="#fff"
-//   strokeDasharray="47.94" strokeDashoffset="0"
-//   strokeWidth="4" strokeMiterlimit="10"
-//   x1="11.413" y1="-2.823" x2="45.309" y2="31.073"/>
-// <line fill="none" stroke="#fff"
-//   strokeDasharray="47.94" strokeDashoffset="0"
-//   strokeWidth="4" strokeMiterlimit="10"
-//   x1="45.309" y1="-2.823" x2="11.413" y2="31.073"/>
-// </svg>

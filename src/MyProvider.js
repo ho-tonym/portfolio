@@ -4,10 +4,11 @@ export const MyContext = createContext();
 export const MyProvider = (props) => {
   const [currentProj, setProj] = useState(0)
   const [showOverlayNav, toggleOverlayNav] = useState(false)
+  const [overlayTextShowing, isOverlayTextShowing] = useState(false)
   const [lineHeight, setLineHeight] = useState(1)
   const [animValue, setAnimValue] = useState({
     overlay: false,
-    rLinks: true,
+    rLinks: false,
     lineHeight: 1,
     title: [],
   })
@@ -22,6 +23,8 @@ export const MyProvider = (props) => {
         setLineHeight,
         animValue,
         setAnimValue,
+        overlayTextShowing,
+        isOverlayTextShowing
       }}
     >
       {props.children}

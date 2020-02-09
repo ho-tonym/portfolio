@@ -2,10 +2,8 @@
 - where should the user look- make sure the delays are appropriate
 
 - uhh react is rerendering like crazy
-
+- there is a weird spot when where image transition from home to each proj page is weird
 some mobile pictures
-
-button hover- svg effect- dash offset
 
 delayed animations all around - consistent thematic
 
@@ -34,11 +32,15 @@ extra distance on scrollbar- fix
 
 - you can still hover botlinks when they are supposed to be hidden
 
+dont allow scroll when in overlay
 ====
 1. preloader
+- almost setup
 2. transition from home to each proj page
+- almost setup
 3. image anim when scroll flipping
 4. overlay - when opened anim
+- almost setup - just adjust
 5. make each proj page cleaner?
 
 vh enter when preloader leaves

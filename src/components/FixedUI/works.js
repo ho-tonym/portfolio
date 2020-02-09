@@ -5,13 +5,13 @@ import { useLocation } from "react-router-dom";
 import _ from 'lodash'
 import { useStateValue } from "../../MyProvider"
 import projectInfo from "../../assets/data/projectInfo"
-import {CopyToClipboard} from 'react-copy-to-clipboard';
+// import
 
 import { myConfig, overLayAnim } from "../utils"
 import styles from './FixedUI.module.css'
 import Number from './svgNumbers/number'
 // import CloseBtn from '../shared/xButton'
-// import Email from '../shared/email'
+import Email from '../shared/email'
 
 const FixedUI = () => {
   const location = useLocation();
@@ -27,6 +27,12 @@ const FixedUI = () => {
     }
   }, [location.pathname])
 
+
+  const bLinkStyle = useSpring({
+    bottom: animValue.rLinks ? "0rem" : "-2.5rem",
+    config: myConfig,
+    // delay: 100,
+  })
   const rLinkStyle = useSpring({
     right: animValue.rLinks ? "0rem" : "-2.5rem",
     config: myConfig,
@@ -34,46 +40,32 @@ const FixedUI = () => {
 
   const list = (props, index) => {
     const array = [
-      <animated.a href="https://github.com/ho-tonym" key={index} style={{ ...props }}>
-        <div>
-          <p>
-            github
-          </p>
-        </div>
-      </animated.a>,
-      <animated.a href="https://www.linkedin.com/in/tony-ho-9984b971/" key={index}style={{ ...props }}>
-        <div>
-          <p>
-            linkedin
-          </p>
-        </div>
-      </animated.a>,
-      <animated.div style={{ ...props }} key={index}>
-        <CopyToClipboard
-          style={{
-            cursor: "pointer",
-            color: "white"
-          }}
-          text={"ho.tonym@gmail.com"}
-        >
-          <p>email</p>
-        </CopyToClipboard>
-      </animated.div>
+        <animated.h1 className="black" key="0" style={{ ...props }}>
+          Hi my name is
+          <span className="white"> Tony Ho</span>
+          , a full stack web developer + graphic designer working in New York.
+        </animated.h1>
+      ,
+      <animated.p key="1" style={{ ...props }}>Interested in working together? Feel free to contact me for any project or collaboration.</animated.p>
+      ,
+        <animated.div key="2" id={styles.contact} style={{ ...props }}>
+          <img alt="email icon" src={emailImg} />
+          <CopyToClipboard text="ho.tonym@gmail.com">
+            <p>ho.tonym@gmail.com</p>
+          </CopyToClipboard>
+        </animated.div>
+      ,
     ]
     return(array[index])
   }
 
-  const trail = useTrail(3, {
-    config: myConfig,
-    from: { transform: "translate3d(0px, 100%, 0px)"},
-    transform: animValue.rLinks ? "translate3d(0px, 0%, 0px)" : "translate3d(0px, 100%, 0px)",
-  })
-
   return (
     <>
       <section className={styles.rightLinks}>
+        {location.pathname === '/'
+          ? <Number color={textColor} />
+          : null}
         <animated.div style={rLinkStyle}>
-          <Number color={textColor} />
           <span className={styles.about} style={{ color: textColor }}
             onClick={() => {
               setAnimValue({...animValue, overlay: true})
@@ -86,15 +78,25 @@ const FixedUI = () => {
         <span className={styles.line} style={{ borderColor: "#b3b3b3", zIndex: 100 }} />
       </section>
 
-      <animated.section className={styles.botLinks}>
-        {trail.map((props, index) => list(props, index))}
+      <animated.section className={styles.botLinks} style={bLinkStyle}>
+        <a href="https://github.com/ho-tonym" style={{ color: textColor }}>
+          <div>
+            <p>
+              github
+            </p>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com/in/tony-ho-9984b971/" style={{ color: textColor }}>
+          <div>
+            <p>
+              linkedin
+            </p>
+          </div>
+        </a>
+        <Email color={textColor} />
       </animated.section>
     </>
   )
 }
 
 export default FixedUI
-
-// {location.pathname === '/'
-//   ? <Number color={textColor} />
-//   : null}

@@ -1,37 +1,54 @@
 import * as easings from 'd3-ease'
-// var easing = BezierEasing(0.645, 0.045, 0.355, 1);
-// easing allows to project x in [0.0,1.0] range onto the bezier-curve defined by the 4 points (see schema below).
-// console.log(easing(0.0)); // 0.0
-// console.log(easing(0.5)); // 0.3125
-// console.log(easing(1.0)); // 1.0
-// cubic-bezier(0.645, 0.045, 0.355, 1);
-export const numSvgAnimTime = 1300
-export const numSvgAnimTime2 = 1400
-//has to be a bit after numSvgAnimTime
+
+export const titleAnimTime = 1000
 export const preloaderAnim = 0
-export const myConfig = {
-  mass: 1,
-  tension: 300,
-  friction: 60,
-  // easing: easing
-}
-// easeInOutCubic
-// duration based - not spring
-export const overLayConfig = {
-  mass: 1,
-  tension: 300,
-  friction: 60,
-  easing: easings.easeCubicInOut,
-  duration: 800,
+
+const numSvgAnimFirst = 1300
+export const numSvgAnim = {
+  firstDelay: numSvgAnimFirst,
+  secondDelay: 1400, //has to be a bit after numSvgAnimTime
+  numConfig: {
+    mass: 1,
+    tension: 300,
+    friction: 60,
+    easing: easings.easeCubicInOut,
+    duration: numSvgAnimFirst, // same as firstDelay
+  }
 }
 
-export const numConfig = {
+export const homeToProjectAnim = {
+  imageDelay: 500,
+  doneDelay: 2500,
+  imageConfig: {
+    mass: 1,
+    tension: 300,
+    friction: 60,
+    easing: easings.easeCubicInOut,
+    duration: 1200,
+  }
+}
+
+export const overLayAnim = {
+  showTextDelay: 700,
+  closeOverlayDelay: 700
+}
+
+
+// right, bot links
+// title flip
+// image enlarge
+// overlay enter, exit
+export const myConfig = { // about 1 second
   mass: 1,
   tension: 300,
   friction: 60,
-  easing: easings.easeCubicInOut,
-  duration: numSvgAnimTime,
 }
+
+
+
+
+
+// redirect
 
 // export const imgConfig = {
 //   mass: 1,
@@ -40,18 +57,5 @@ export const numConfig = {
 //   delay:3000
 // }
 
-export const delayAnimTime = 1000
-export const imageAnimTime = 1200
-
-// useSpring({
-//   from: { width: 10, height: 10 },
-//   to: async (next) => {
-//     // Create a delayed animation
-//     next({ width: 100, height: 100, delay: 2000 }) // 2 seconds
-//
-//     // Immediately override the width animation
-//     next({ width: 50 }) // This creates a new animation which starts immediately,
-//                         // and it prevents the delayed animation from changing
-//                         // the width. The height will still animate in 2 seconds.
-//   }
-// })
+// easeInOutCubic
+// duration based - not spring
