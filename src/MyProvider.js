@@ -12,6 +12,7 @@ export const MyProvider = (props) => {
     lineHeight: 1,
     title: [],
   })
+	const [svgNumber, setSvgNumber] = useState([])
   return (
     <MyContext.Provider
       value={{
@@ -24,7 +25,9 @@ export const MyProvider = (props) => {
         animValue,
         setAnimValue,
         overlayTextShowing,
-        isOverlayTextShowing
+        isOverlayTextShowing,
+        svgNumber,
+        setSvgNumber
       }}
     >
       {props.children}

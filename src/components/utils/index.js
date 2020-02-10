@@ -33,7 +33,13 @@ export const overLayAnim = {
   closeOverlayDelay: 700
 }
 
-
+export const secondZeroSvgConfig = {
+  mass: 1,
+  tension: 300,
+  friction: 60,
+  easing: easings.easeCubicInOut,
+  duration: 900,
+}
 // right, bot links
 // title flip
 // image enlarge
@@ -43,7 +49,6 @@ export const myConfig = { // about 1 second
   tension: 300,
   friction: 60,
 }
-
 
 
 

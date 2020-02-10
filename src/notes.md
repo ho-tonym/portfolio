@@ -1,3 +1,5 @@
+if you pass style like spring- you need to ...spread it
+
 - useTtransition first arg is the thing that it looks at to change, second needs a key for each array item, or obj, else it can be null. so if first arg isnt a bool you need it
 
 - the item in

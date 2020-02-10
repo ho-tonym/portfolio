@@ -1,21 +1,26 @@
 import React, { useState, useCallback, useEffect, useRef } from 'react';
 import { useSpring, animated, useTransition } from 'react-spring'
-import styles from '../FixedUI.module.css'
-import { numSvgAnim, myConfig } from "../../utils"
-import { useStateValue } from "../../../MyProvider"
+import styles from '../../FixedUI.module.css'
+import { numSvgAnim, myConfig } from "../../../utils"
+import { useStateValue } from "../../../../MyProvider"
+import { useLocation } from "react-router-dom";
 
-const Svg = ({ color, stroke, d, numSvgStyle }) => {
-	const { currentProj, animValue } = useStateValue();
+const Svg = ({ stroke, d, numSvgStyle }) => {
+	const { currentProj, animValue, svgNumber, setSvgNumber } = useStateValue();
 	const ref = useRef([])
+	const location = useLocation();
 	const isInitialMount = useRef(true);
-	const [items, set] = useState([])
 
-  useEffect(() => set(['1']), [])
+  useEffect(() => {
+		if (location.pathname === '/') {
+			setSvgNumber(['1'])
+		}
+	}, [])
 	useEffect(() => {
 		isInitialMount.current ? isInitialMount.current = false : svgAnim()
 	}, [currentProj]);
 
-  const transitions = useTransition(items, null, {
+  const transitions = useTransition(svgNumber, null, {
     config: numSvgAnim.numConfig,
     from: { strokeDashoffset: stroke },
     enter: { strokeDashoffset: 0 },
@@ -25,8 +30,8 @@ const Svg = ({ color, stroke, d, numSvgStyle }) => {
 	const svgAnim = useCallback(() => {
 		ref.current.map(clearTimeout)
 		ref.current = []
-		set([])
-		ref.current.push(setTimeout(() => set(['1']), numSvgAnim.secondDelay))
+		setSvgNumber([])
+		ref.current.push(setTimeout(() => setSvgNumber(['1']), numSvgAnim.secondDelay))
 	}, [])
 
 	return (
@@ -45,7 +50,7 @@ const Svg = ({ color, stroke, d, numSvgStyle }) => {
 					fill="none"
 					strokeWidth="2"
 					strokeMiterlimit="10"
-					stroke={color}
+					stroke={"#fff"}
 					d={d}
 					style={{ ...props }}
 					strokeDasharray={stroke}

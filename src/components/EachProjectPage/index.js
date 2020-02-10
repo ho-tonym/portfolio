@@ -12,7 +12,7 @@ const EachProjectPage = () => {
     document.body.style.overflow = "auto";
   }, [])
 
-  const { currentProj, setAnimValue, animValue } = useStateValue();
+  const { currentProj, setAnimValue, animValue, setSvgNumber } = useStateValue();
   const { backgroundColor, alt, src, nameArray,
     colorsArray, description,
     githubLink, hostLink,
@@ -47,7 +47,10 @@ const EachProjectPage = () => {
             left: "48%",
             zIndex: 100
           }}
-          animFunc={() => setAnimValue({ ...animValue, rLinks: true })}
+          animFunc={() => {
+            setAnimValue({ ...animValue, rLinks: true })
+            setSvgNumber(["1"])
+          }}
         />
       </Link>
         <section className={zero}>

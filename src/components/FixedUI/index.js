@@ -73,14 +73,15 @@ const FixedUI = () => {
     <>
       <section className={styles.rightLinks}>
         <animated.div style={rLinkStyle}>
-          <Number color={textColor} />
-          <span className={styles.about} style={{ color: textColor }}
+          <Number />
+          <span className={styles.about}
             onClick={() => {
               setAnimValue({...animValue, overlay: true})
               setTimeout(() => isOverlayTextShowing(true), overLayAnim.showTextDelay)
             }}>
-            <p>about</p></span>
-          <span className={styles.work} style={{ color: textColor }}><p>work</p></span>
+            <p>about</p>
+          </span>
+          <span className={styles.work}><p>work</p></span>
         </animated.div>
         <span className={styles.line} style={{ borderColor: textColor, height: `${lineHeight}rem` }} />
         <span className={styles.line} style={{ borderColor: "#b3b3b3", zIndex: 100 }} />

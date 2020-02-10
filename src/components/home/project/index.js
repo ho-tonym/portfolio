@@ -8,7 +8,7 @@ import { myConfig, titleAnimTime, homeToProjectAnim, imageConfig } from "../../u
 
 function Project() {
   const history = useHistory()
-  const { currentProj, animValue, setAnimValue } = useStateValue();
+  const { currentProj, animValue, setAnimValue, setSvgNumber } = useStateValue();
   const { backgroundColor, alt, src, name, link } = projectInfo[currentProj]
   const isInitialMount = useRef(true);
   const ref = useRef([])
@@ -39,6 +39,7 @@ function Project() {
   }, [])
 
   function delayedRedirect() {
+    setSvgNumber([])
     ref.current.map(clearTimeout)
     ref.current = []
     setAnimValue({ ...animValue, title: [], rLinks: false })// leave
