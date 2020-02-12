@@ -6,11 +6,13 @@ export const MyProvider = (props) => {
   const [showOverlayNav, toggleOverlayNav] = useState(false)
   const [overlayTextShowing, isOverlayTextShowing] = useState(false)
   const [lineHeight, setLineHeight] = useState(1)
+  const [transOverlay, setTrans] = useState(true)
   const [animValue, setAnimValue] = useState({
     overlay: false,
     rLinks: false,
     lineHeight: 1,
     title: [],
+    mainImg: true,
   })
 	const [svgNumber, setSvgNumber] = useState([])
   return (
@@ -27,7 +29,9 @@ export const MyProvider = (props) => {
         overlayTextShowing,
         isOverlayTextShowing,
         svgNumber,
-        setSvgNumber
+        setSvgNumber,
+        transOverlay,
+        setTrans,
       }}
     >
       {props.children}

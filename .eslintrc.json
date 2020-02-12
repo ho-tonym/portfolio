@@ -36,7 +36,6 @@
       "react/jsx-indent": "warn",
       "react/jsx-first-prop-new-line": "off",
       "react/prop-types": "off",
-      "quotes": "off",
       "object-curly-newline" : "off",
       "lines-between-class-members" : "off",
       "max-len":"off",

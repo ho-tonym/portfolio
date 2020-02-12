@@ -18,6 +18,7 @@ const ScrollDetect = () => {
 
 //   window.addEventListener('wheel', e => handleNavigation(e));
 // window.removeEventListener("wheel", e => handleNavigation(e));
+//ONLY WORK IF STATE IS SET A CERTAIN WAY
   const scrollUp = _.debounce(() => {
     animRef.current = false
     toggleAnim(false)

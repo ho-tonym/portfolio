@@ -1,14 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styles from './xButton.module.css'
+import { useSpring, animated } from 'react-spring'
 
-const CloseBtn = ({ animFunc, color, myStyle }) => {
+const CloseBtn = ({ spring, animFunc, color, myStyle }) => {
   // console.log(animFunc, animValue, color, myStyle)
 return(
-  <button type="button"
+  <animated.button type="button"
     onClick={animFunc}
     className={styles.closeBtn}
-    style={myStyle}
+    style={{ ...myStyle, ...spring }}
   >
     <svg
       x="0px" y="0px"
@@ -29,7 +30,7 @@ return(
         strokeDasharray="122.28" strokeDashoffset="0"
       />
     </svg>
-  </button>
+  </animated.button>
 )
 }
 

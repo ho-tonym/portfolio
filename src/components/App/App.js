@@ -2,9 +2,9 @@ import React, {lazy, Suspense} from 'react';
 import { MyProvider } from '../../MyProvider.js'
 import { BrowserRouter as Router } from 'react-router-dom'
 import TransitionOverlay from '../TransitionOverlay'
-import SlowScroll from "../home/SlowScroll"
-import styles from './App.module.css'
-import {preloaderAnim} from '../utils'
+import { preloaderAnim } from '../utils'
+import Preloader from './Preloader'
+
 const FixedUI = lazy(() => import("../FixedUI"))
 const OverlayNav = lazy(() => import("../overlayNav"))
 const Routes = lazy(() => (
@@ -19,17 +19,15 @@ function App() {
   return (
     <MyProvider>
       <Router>
+          <TransitionOverlay />
         <Suspense
           fallback={(
-            <div className={styles.preloader}>
-              <h1>TONY HO</h1>
-            </div>
-          )}>
+            <Preloader />
+          )}
+        >
           <FixedUI />
           <OverlayNav />
           <Routes />
-            {/*<SlowScroll />*/}
-            {/*<TransitionOverlay />*/}
         </Suspense>
       </Router>
     </MyProvider>

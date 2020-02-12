@@ -28,7 +28,7 @@ const FixedUI = () => {
   }, [location.pathname])
 
   const rLinkStyle = useSpring({
-    right: animValue.rLinks ? "0rem" : "-2.5rem",
+    right: animValue.rLinks ? "0rem" : "-3rem",
     config: myConfig,
   })
 
@@ -66,7 +66,7 @@ const FixedUI = () => {
   const trail = useTrail(3, {
     config: myConfig,
     from: { transform: "translate3d(0px, 100%, 0px)"},
-    transform: animValue.rLinks ? "translate3d(0px, 0%, 0px)" : "translate3d(0px, 100%, 0px)",
+    transform: animValue.rLinks ? "translate3d(0px, 0%, 0px)" : "translate3d(0px, 150%, 0px)",
   })
 
   return (

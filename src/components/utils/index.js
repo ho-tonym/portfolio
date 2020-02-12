@@ -2,6 +2,7 @@ import * as easings from 'd3-ease'
 
 export const titleAnimTime = 1000
 export const preloaderAnim = 0
+// export const preloaderAnim = 4000
 
 const numSvgAnimFirst = 1300
 export const numSvgAnim = {

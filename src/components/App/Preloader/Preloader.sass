@@ -8,6 +8,10 @@
   justify-content: center
   transition: 1.5s
   align-items: center
+  span
+    margin: 0
+    overflow: hidden
+    height: 15vw
   h1
     margin: 0
     color: white
@@ -16,11 +20,15 @@
 
 @media (min-width: 1200px)
   .preloader
+    span
+      height: 12vw
     h1
       letter-spacing: 1.2rem
       font-size: 12vw
 @media (max-width: 1199px) and (min-width: 769px)
   .preloader
+    span
+      height: 14vw
     h1
       letter-spacing: 0.8rem
       font-size: 14vw
@@ -28,5 +36,7 @@
 //
 @media (max-width: 500px)
   .preloader
+    span
+      height: 15vw
     h1
       font-size: 15vw

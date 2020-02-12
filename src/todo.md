@@ -1,6 +1,9 @@
 - dont allow text wrapping h1 project
 - where should the user look- make sure the delays are appropriate
 
+- instead of having all effects in componentwillmount
+- use some componentwillunmount
+
 - uhh react is rerendering like crazy
 - there is a weird spot when where image transition from home to each proj page is weird
 some mobile pictures

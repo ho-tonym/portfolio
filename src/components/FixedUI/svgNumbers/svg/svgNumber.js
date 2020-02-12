@@ -11,11 +11,6 @@ const Svg = ({ stroke, d, numSvgStyle }) => {
 	const location = useLocation();
 	const isInitialMount = useRef(true);
 
-  useEffect(() => {
-		if (location.pathname === '/') {
-			setSvgNumber(['1'])
-		}
-	}, [])
 	useEffect(() => {
 		isInitialMount.current ? isInitialMount.current = false : svgAnim()
 	}, [currentProj]);
