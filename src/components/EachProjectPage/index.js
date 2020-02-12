@@ -1,25 +1,34 @@
 import React, { useEffect, useState } from 'react'
 import { useSpring, animated } from 'react-spring'
-import { useHistory, Link } from "react-router-dom";
+import { useHistory, Link, useLocation } from 'react-router-dom';
 import styles from './projectPage.module.css'
 import projectInfo from '../../assets/data/projectInfo'
-import { useStateValue } from "../../MyProvider"
+import { useStateValue } from '../../MyProvider'
 import CloseBtn from '../shared/CloseBtn'
 import CustomScrollBar from './CustomScrollBar'
 import { myConfig } from '../utils'
 
 
 const EachProjectPage = () => {
+  const location = useLocation()
   useEffect(() => {
-    document.body.style.overflow = "auto";
+    document.body.style.overflow = 'auto';
     set(true)
     setXButton(true)
+
+    projectInfo.forEach((p, index) => {
+      if (`/${p.link}` === location.pathname) {
+        setProj(index)
+      }
+    })
+
     return () => {
       setTrans(false)
+      setAnimValue({ ...animValue, lineColor: 'white' })
     }
   }, [])
   const history = useHistory()
-  const { currentProj, setAnimValue, animValue, setSvgNumber, setTrans } = useStateValue();
+  const { currentProj, setAnimValue, animValue, setSvgNumber, setTrans, setProj } = useStateValue();
   const { backgroundColor, alt, src, nameArray,
     colorsArray, description,
     githubLink, hostLink,
@@ -34,22 +43,22 @@ const EachProjectPage = () => {
   // const [aniPropsPink, setPink] = useSpring(() => ({ x: 0, y: 0, scale: 1 }))
   const [titleShowing, set] = useState(false)
   const h1Props = useSpring({
-    transform: titleShowing ? "translate3d(0px, 0%, 0px)" : "translate3d(0px, 100%, 0px)",
+    transform: titleShowing ? 'translate3d(0px, 0%, 0px)' : 'translate3d(0px, 100%, 0px)',
     config: myConfig
   })
   const [xButton, setXButton] = useState(false)
   const closeBtnProps = useSpring({
-    transform: xButton ? "translate3d(0px, 0%, 0px)" : "translate3d(0px, -150%, 0px)",
+    transform: xButton ? 'translate3d(0px, 0%, 0px)' : 'translate3d(0px, -150%, 0px)',
     config: myConfig
   })
 
   function delayedRedirect() {
-    document.body.style.overflow = "hidden";
+    document.body.style.overflow = 'hidden';
     setAnimValue({ ...animValue, rLinks: true })
-    setSvgNumber(["1"])
+    setSvgNumber(['1'])
     setXButton(false)
     setTrans(true)
-    setTimeout(() => history.push("/"), 1000)
+    setTimeout(() => history.push('/'), 1000)
   }
 
   return (
@@ -60,9 +69,9 @@ const EachProjectPage = () => {
         color="#000"
         spring={closeBtnProps}
         myStyle={{
-          position: "fixed",
-          top: "1rem",
-          left: "48%",
+          position: 'fixed',
+          top: '1rem',
+          left: '48%',
           zIndex: 100,
         }}
         animFunc={() => delayedRedirect()}
@@ -96,13 +105,18 @@ const EachProjectPage = () => {
           <h1>02</h1>
           <h2>COLORS</h2>
         </div>
-        <div>
-          {colorsArray.map(c => (
-            <span key={c} className={colors} style={{ backgroundColor: c }}>
-              <p>{c}</p>
-            </span>
+          {colorsArray.map((element, i) => (
+            <div className={styles.colorSection} key={i}>
+              {element.map(c => (
+                <span
+                  key={c}
+                  style={{ backgroundColor: c }}
+                >
+                  <p>{c}</p>
+                </span>
+              ))}
+            </div>
           ))}
-        </div>
       </section>
       <section className={websiteImages}>
         <div>
@@ -127,19 +141,22 @@ const EachProjectPage = () => {
             <p>10.2017</p>
           </span>
           <hr />
-          <a href={hostLink}>
+
             <span>
               <h3>WEBSITE</h3>
-              <p>Link to website</p>
-          </span>
-          </a>
+              <a href={hostLink} className={styles.linkContainer}>
+                <p>Link to website</p>
+                <p className={styles.arrow}> &#8594;</p>
+              </a>
+            </span>
             <hr />
-          <a href={githubLink}>
             <span>
               <h3>GITHUB</h3>
-              <p>Link to repo</p>
+              <a href={githubLink} className={styles.linkContainer}>
+                <p>Link to repo</p>
+                <p className={styles.arrow}> &#8594;</p>
+              </a>
             </span>
-          </a>
         </div>
       </section>
     </div>
@@ -148,3 +165,25 @@ const EachProjectPage = () => {
 }
 
 export default EachProjectPage
+// {colorsArray.map(c => (
+//   <span
+//     key={c}
+//     className={colors}
+//     style={{ backgroundColor: c }}>
+//     <p>{c}</p>
+//   </span>
+// ))}
+
+// {colorsArray.forEach(element => (
+//   element.map(c => {
+//     console.log(c)
+//     return(
+//       <span
+//         key={c}
+//         className={colors}
+//         style={{ backgroundColor: c }} >
+//         <p>{c}</p>
+//       </span>
+//     )
+//   })
+// ))}

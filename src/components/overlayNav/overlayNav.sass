@@ -3,9 +3,6 @@
 h1
 	font-size: 4rem
 
-// section
-// 	overflow: hidden
-
 .overlay
 	height: 0%
 	width: 100%
@@ -13,7 +10,7 @@ h1
 	z-index: 200
 	top: 0
 	left: 0
-	background-color: #E8777C
+	background-color: $overlayBack
 	overflow-x: hidden
 	display: flex
 	align-items: flex-start
@@ -26,7 +23,6 @@ h1
 	margin-left: 17vw
 	margin-right: 17vw
   overflow: hidden
-	//fix
   height: 80px
 	p:nth-of-type(1)
 		color: black
@@ -52,24 +48,9 @@ h1
 	all: unset
 	color: black
 	font-size: 1.1rem
-	font-family: 'dinAlt'
 	position: absolute
 	top: 1.3rem
 	left: $margin
-
-// .closeBtn
-// 	all: unset
-// 	color: black
-// 	position: absolute
-// 	font-size: 40px
-// 	top: 1rem
-// 	right: $margin
-        <button type="button" className={styles.closeBtn}
-          onClick={() => {
-            toggle(false)
-          }}>&times;</button>
-
-
 
 #contact
 	cursor: pointer
@@ -106,6 +87,3 @@ h1
 			width: auto
 		p
 			font-size: 1rem
-
-// array - empty spaces in svg path
-//offset- moves where the empty spaces are

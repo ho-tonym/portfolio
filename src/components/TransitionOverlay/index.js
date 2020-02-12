@@ -14,9 +14,7 @@ const TransitionOverlay = () => {
   const [bind, { height }] = useMeasure()
   const animProps = useSpring({ height: transOverlay ? "100%" : "0%" })
   return (
-    <animated.div {...bind} className={styles.overlay} style={{...animProps, backgroundColor}} className={styles.transitionOverlay}>
-
-    </animated.div>
+    <animated.div {...bind} className={styles.overlay} style={{...animProps, backgroundColor}} className={styles.transitionOverlay} />
   )
 }
 

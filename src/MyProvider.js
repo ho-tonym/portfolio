@@ -13,6 +13,7 @@ export const MyProvider = (props) => {
     lineHeight: 1,
     title: [],
     mainImg: true,
+    lineColor: 'white',
   })
 	const [svgNumber, setSvgNumber] = useState([])
   return (

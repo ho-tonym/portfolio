@@ -46,7 +46,7 @@ export default
         pic: pic2Sort
       }
     ],
-    colorsArray: ["#fff", "#2f2f2f", "#017aff", "#636363", "#ff9f38", "#ff6e8d"],
+    colorsArray: [["#fff", "#2f2f2f", "#017aff", "#636363", "#ff9f38", "#ff6e8d"]],
     description: "This app was a way for me to learn more about sorting algorithms and help others understand the differences between some of the more popular ones. Feel free to play around with it!",
     githubLink:"https://github.com/ho-tonym/sorting-visualizer",
     hostLink:"https://ho-tonym.github.io/sorting-visualizer/"
@@ -87,10 +87,10 @@ export default
       }
     ],
     colorsArray: [
-      "#707070", "#9e9e9e", "#55acee", "#6FC6FF",
-      "#8accff", "#9acff7", "#3C93D5", "#11bd0e",
-      "#e04b4b", "#fff", "#fafafa", "#f4f4f4",
-      "#696969", "#444444", "#dddddd"
+      ["#fff", "#fafafa", "#f4f4f4", "#dddddd"],
+      ["#707070", "#9e9e9e", "#696969", "#444444"],
+      ["#9acff7", "#8accff", "#55acee", "#6FC6FF", "#3C93D5"],
+      ["#11bd0e","#e04b4b"]
     ],
     description: "The purpose of this app is for convenient comparisons of your pokemon against certain matchups to determine your best lineup. Specifically for Pokemon Go.",
     githubLink:"https://github.com/ho-tonym/pokedex",
@@ -124,9 +124,10 @@ export default
       }
     ],
     colorsArray: [
-      "#B0B0B0", "#fff", "#ED6B74", "#282936",
-      "#333", "#666", "#37dacb", "#a78be8",
-      "#eee", "#ddd", "#00d2ff", "#3a7bd5"
+      ["#fff", "#eee", "#ddd"],
+      ["#B0B0B0", "#666", "#282936", "#333"],
+      ["#ED6B74", "#37dacb", "#a78be8"],
+      ["#00d2ff", "#3a7bd5"]
     ],
     description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
     githubLink:"https://github.com/ho-tonym/donutproductpage",

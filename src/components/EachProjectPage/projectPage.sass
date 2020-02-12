@@ -1,13 +1,12 @@
-// default size is rem
-// @import "../../../assets/style/variables.sass"
+@import "../../assets/style/variables.sass"
+
 .projectPage
   background-color: white
   position: relative
-  transition: background-color 1.5s ease-out
+  transition: background-color $one_Five
   overflow: auto
-  // overflow-y: scroll
   h1
-    color: #E93F47
+    color: $red
     text-transform: uppercase
     font-family: din
     white-space: nowrap
@@ -19,22 +18,11 @@
     text-align: right
     font-size: 3rem
   p
-    font-family: "dinAlt"
-    // opacity: 0.5
+    font-family: "Roboto"
   hr
     opacity: 0.3
     width: 100%
     margin: 0
-
-.xButton
-  all: unset
-  z-index: 100
-  position: fixed
-  color: black
-  top: 1rem
-  left: 48%
-  // font-size: 40px
-  // text-align: center
 
 .zero
   position: relative
@@ -76,43 +64,14 @@
     align-items: center
     justify-content: space-between
   p
-    color: #676767
-    font-family: 'Roboto'
+    color: $grayPText
     font-size: 5vw
     line-height: 7vw
-
-.backgroundSection
-  background: #E0AFAF
-  height: 20rem
-  // height: 50vh
-
-.websiteImages
-  background-color: #F2F2F2
-  div
-    padding: 8% 0%
-    display: flex
-    flex-direction: column
-    align-items: center
-    img
-      box-shadow: 0rem 0.2rem 0.2rem rgba(0, 0, 0, 0.25)
-      margin: 3% 0%
-      border: 0.5rem solid white
-      max-width: 1200px
-      height: auto
-      width: 80%
 
 .second
   position: relative
   margin: 6% 11%
   padding-bottom: 4%
-  div:nth-child(1)
-    display: flex
-    align-items: center
-    justify-content: space-between
-  div:nth-child(2)
-    padding-top: 5vw
-    display: flex
-    justify-content: space-between
 
 .third
   position: relative
@@ -135,48 +94,62 @@
         margin: 0
         color: black
       p
-        color: #676767
-        font-family: 'Roboto'
+        color: $grayPText
+    a
+      display: flex
+      align-items: center
+      justify-content: space-between
 
-.colors
-  background-color: blue
-  border-radius: 50%
-  height: 9vw
-  width: 9vw
-  box-shadow: 0rem 0.375rem 0.25rem rgba(0, 0, 0, 0.25)
-  display: inline-block
-  p
-    font-family: "din"
-    position: relative
-    top: 9.5vw
-    text-align: center
-    font-size: 2vw
-
-.empty
-  height: 500px
-
-.nextProject
-  background-color: white
-  height: 100vh
-  width: 100%
-  display: flex
-  left: 0
-  right: 0
-  margin: auto
-  justify-content: center
-  align-items: center
-  a
+.linkContainer
+  p:first-of-type
     position: absolute
-    font-size: 6.5rem
-    h1
-      transition: 0.3s ease-out
-      color: black
-      cursor: pointer
-      text-transform: uppercase
-      font-family: din
+    right: 1.4rem
+  p:last-of-type
+    position: absolute
+    right: 0
+
+.linkContainer:hover > .arrow
+  right: -0.7rem
+
+.arrow
+  transition: $point_Three
+
+.colorSection
+  margin-bottom: 7vw
+  span
+    background-color: black
+    height: 9vw
+    width: 9vw
+    box-shadow: 0rem 0.375rem 0.25rem rgba(0, 0, 0, 0.25)
+    display: inline-block
+    margin-right: 3vw
+    p
+      // font-family: "din"
+      // font-size: 2vw
+      color: $grayPText
+      position: relative
+      top: 9.5vw
       text-align: center
-      &:hover
-        color: #E93F47
+      font-size: 1.5vw
+
+.backgroundSection
+  background: #000
+  height: 20rem
+
+.websiteImages
+  background-color: $websiteImageBorder
+  div
+    padding: 8% 0%
+    display: flex
+    flex-direction: column
+    align-items: center
+    img
+      margin: 3% 0%
+      border: 0.5rem solid white
+      max-width: 75rem
+      height: auto
+      width: 80%
+
 
 @media (min-width: 1200px)
   .projectPage
@@ -277,11 +250,3 @@
     div:nth-child(2)
       span
         margin: 3vw 0
-
-// or vs breakpoints
-
-//KEY IS 1VW in html - for font-size
-// then use rem units
-
-//top, rkight, bottom, left
-//top, bottom / left,right

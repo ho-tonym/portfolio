@@ -1,3 +1,5 @@
+@import "../../assets/style/variables.sass"
+
 .rightLinks
 	z-index: 100
 	color: white
@@ -19,8 +21,6 @@
 		right: 0
 		margin-right: 1.5rem
 		margin-top: 17vh
-	p
-		transition: 0.5s ease-out
 
 .numberSVG
 	top: 1.2rem
@@ -32,19 +32,6 @@
 	top: 4.2rem
 	right: 1.2rem
 	position: fixed
-
-// path
-// 	transition: 0.9s
-
-// path
-//   stroke-dashoffset: 0
-// @keyframes stroke-anim-full
-// 	to
-// 		stroke-dashoffset: 0
-//
-// @keyframes stroke1
-// 	to
-// 		stroke-dashoffset: 122.28
 
 .botLinks
 	font-family: 'Roboto Mono', monospace
@@ -65,17 +52,6 @@
 		transition: 0.3s ease-out
 		&:hover
 			transform: translate3d(0px, -25%, 0px)
-//
-// .botLinks
-// 	p + span
-// 		position: absolute
-// 		top: 0
-// 		left: 0
-// 		right: 0
-// 		margin: auto
-// 		height: 3px
-// 		width: 50px
-// 		background-color: #fff
 
 .about
 	position: relative
@@ -84,8 +60,6 @@
 	font-family: 'Roboto Mono', monospace
 	p
 		font-size: 12px
-		// &:hover
-		// 	transform: translate3d(-25%, 0px, 0px)
 
 .line
 	border-left: 0.15rem solid white
@@ -94,7 +68,7 @@
 	margin-top: 3.1rem
 	right: 1.5rem
 	z-index: 101
-	transition: 0.5s ease-out
+	transition: $point_Five
 
 .work
 	position: relative

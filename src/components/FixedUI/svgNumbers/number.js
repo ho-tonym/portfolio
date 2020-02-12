@@ -6,6 +6,7 @@ import { numSvgAnim, myConfig, secondZeroSvgConfig } from "../../utils"
 import { svgData } from './data/svgData'
 import { useSpring, useTrail, animated } from 'react-spring'
 import ZeroSvg from './svg/zeroSvgNumber'
+
 const Number = () => {
   const { currentProj, animValue } = useStateValue();
   const [svgValues, setSvgValues] = useState({

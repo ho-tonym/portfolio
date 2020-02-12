@@ -1,8 +1,8 @@
 import * as easings from 'd3-ease'
 
 export const titleAnimTime = 1000
-export const preloaderAnim = 0
-// export const preloaderAnim = 4000
+// export const preloaderAnim = 0
+export const preloaderAnim = 4000
 
 const numSvgAnimFirst = 1300
 export const numSvgAnim = {
@@ -50,18 +50,3 @@ export const myConfig = { // about 1 second
   tension: 300,
   friction: 60,
 }
-
-
-
-
-// redirect
-
-// export const imgConfig = {
-//   mass: 1,
-//   tension: 300,
-//   friction: 60,
-//   delay:3000
-// }
-
-// easeInOutCubic
-// duration based - not spring

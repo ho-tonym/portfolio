@@ -1,3 +1,5 @@
+@import "../../assets/style/variables.sass"
+
 .home
   color: #fff
   margin: 0
@@ -15,14 +17,11 @@
   transform: translate(-50%, -50%)
 
 .scroll
-  transition: 1.5s ease-out
-  // height: 30rem
-  // opacity: 0.9
+  transition: $one_Five
   font-size: 12px
   font-family: 'Roboto Mono', monospace
   display: flex
   flex-direction: column
-  // align-content: space-between
   align-items: center
   position: absolute
   bottom: 0
@@ -34,19 +33,6 @@
   &:hover
     opacity: 0.5
 
-
-
 @media (max-width: 576px)
   .nameTitle
     font-size: 5rem
-// @media (min-width: 576px)
-
-
-// // Medium devices (tablets, 768px and up)
-// @media (min-width: 768px)
-//
-// // Large devices (desktops, 992px and up)
-// @media (min-width: 992px)
-//
-// // Extra large devices (large desktops, 1200px and up)
-// @media (min-width: 1200px)

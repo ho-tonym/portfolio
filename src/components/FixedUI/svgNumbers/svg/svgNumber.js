@@ -12,7 +12,9 @@ const Svg = ({ stroke, d, numSvgStyle }) => {
 	const isInitialMount = useRef(true);
 
 	useEffect(() => {
-		isInitialMount.current ? isInitialMount.current = false : svgAnim()
+		if (location.pathname === '/') {
+			isInitialMount.current ? isInitialMount.current = false : svgAnim()
+		}
 	}, [currentProj]);
 
   const transitions = useTransition(svgNumber, null, {

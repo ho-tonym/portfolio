@@ -19,7 +19,7 @@ function Project() {
   const imageProps = useSpring({
     width: imageIsSmol ? '80%' : '100%',
     height: imageIsSmol ? '50%' : '100%',
-    maxWidth: imageIsSmol ? "34.375rem" : '100%',
+    maxWidth: imageIsSmol ? "50rem" : '100%',
     top: imageIsSmol ? "42vh" : "50%",
     config: homeToProjectAnim.imageConfig
   })
@@ -41,7 +41,6 @@ function Project() {
   function delayedRedirect() {
     if (!isCalled) {
       toggleCalled(true)
-      console.log("called why")
       setSvgNumber([])
       ref.current.map(clearTimeout)
       ref.current = []

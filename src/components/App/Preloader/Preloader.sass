@@ -1,12 +1,14 @@
+@import "../../../assets/style/variables.sass"
+
 .preloader
   position: fixed
   z-index: 1000
-  background-color: #000
+  background-color: black
   min-width: 100%
   min-height: 100%
   display: flex
   justify-content: center
-  transition: 1.5s
+  transition: $one_Five
   align-items: center
   span
     margin: 0
@@ -32,8 +34,7 @@
     h1
       letter-spacing: 0.8rem
       font-size: 14vw
-// @media (max-width: 768px) and (min-width: 501px)
-//
+
 @media (max-width: 500px)
   .preloader
     span
