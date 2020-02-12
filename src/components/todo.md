@@ -22,6 +22,8 @@ css - same transitions
 colors- text -> not aligned
 color- margin-right
 
+let ppl know you can scroll
+
 ===========MEH===========
 - there is a weird spot when where image transition from home to each proj page is weird
 some mobile pictures

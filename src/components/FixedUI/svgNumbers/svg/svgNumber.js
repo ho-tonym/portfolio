@@ -6,16 +6,25 @@ import { useStateValue } from "../../../../MyProvider"
 import { useLocation } from "react-router-dom";
 
 const Svg = ({ stroke, d, numSvgStyle }) => {
-	const { currentProj, animValue, svgNumber, setSvgNumber } = useStateValue();
+	const { currentProj, animValue, svgNumber, setSvgNumber, weAreTransitioning } = useStateValue();
 	const ref = useRef([])
 	const location = useLocation();
 	const isInitialMount = useRef(true);
-
+//so if i click in while the svg is closing, it will show up
+//
 	useEffect(() => {
 		if (location.pathname === '/') {
 			isInitialMount.current ? isInitialMount.current = false : svgAnim()
 		}
 	}, [currentProj]);
+
+	useEffect(() => {
+		if(weAreTransitioning) {
+			ref.current.map(clearTimeout)
+			ref.current = []
+			setSvgNumber([])
+		}
+	}, [weAreTransitioning])
 
   const transitions = useTransition(svgNumber, null, {
     config: numSvgAnim.numConfig,

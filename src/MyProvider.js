@@ -16,6 +16,7 @@ export const MyProvider = (props) => {
     lineColor: 'white',
   })
 	const [svgNumber, setSvgNumber] = useState([])
+  const [weAreTransitioning, toggleTransition] = useState(false)
   return (
     <MyContext.Provider
       value={{
@@ -33,6 +34,8 @@ export const MyProvider = (props) => {
         setSvgNumber,
         transOverlay,
         setTrans,
+        weAreTransitioning,
+        toggleTransition,
       }}
     >
       {props.children}

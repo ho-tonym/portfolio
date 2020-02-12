@@ -8,7 +8,7 @@ import { myConfig, titleAnimTime, homeToProjectAnim, imageConfig } from "../../u
 
 function Project() {
   const history = useHistory()
-  const { currentProj, animValue, setAnimValue, setSvgNumber } = useStateValue();
+  const { currentProj, animValue, setAnimValue, setSvgNumber, toggleTransition, weAreTransitioning } = useStateValue();
   const { backgroundColor, alt, src, name, link } = projectInfo[currentProj]
   const isInitialMount = useRef(true);
   const ref = useRef([])
@@ -37,16 +37,16 @@ function Project() {
   })
 
   // clicking image or h1
-  const [isCalled, toggleCalled] = useState(false)
   function delayedRedirect() {
-    if (!isCalled) {
-      toggleCalled(true)
+    if (!weAreTransitioning) {
+      toggleTransition(true)
       setSvgNumber([])
       ref.current.map(clearTimeout)
       ref.current = []
       setAnimValue({ ...animValue, title: [], rLinks: false })// leave
       setTimeout(() => setImageIsSmol(false), homeToProjectAnim.imageDelay)
       setTimeout(() => history.push(link), homeToProjectAnim.doneDelay)
+      setTimeout(() => toggleTransition(false), homeToProjectAnim.doneDelay)//prevent project from changing when scrolling and we already picked one
     }
   }
 
