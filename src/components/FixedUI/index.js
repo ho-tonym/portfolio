@@ -15,7 +15,7 @@ import Number from './svgNumbers/number'
 
 const FixedUI = () => {
   const location = useLocation();
-  const [textColor, setTextColor] = useState("white")
+  const [borderColor, setTextColor] = useState("white")
   const { animValue, setAnimValue, lineHeight, setLineHeight, isOverlayTextShowing } = useStateValue();
 
   useEffect(() => {
@@ -83,7 +83,7 @@ const FixedUI = () => {
           </span>
           <span className={styles.work}><p>work</p></span>
         </animated.div>
-        <span className={styles.line} style={{ borderColor: textColor, height: `${lineHeight}rem` }} />
+        <span className={styles.line} style={{ borderColor, height: `${lineHeight}rem` }} />
         <span className={styles.line} style={{ borderColor: "#b3b3b3", zIndex: 100 }} />
       </section>
 
@@ -97,5 +97,5 @@ const FixedUI = () => {
 export default FixedUI
 
 // {location.pathname === '/'
-//   ? <Number color={textColor} />
+//   ? <Number color={borderColor} />
 //   : null}

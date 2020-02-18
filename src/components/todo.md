@@ -28,3 +28,5 @@ let ppl know you can scroll
 - there is a weird spot when where image transition from home to each proj page is weird
 some mobile pictures
 - rlink - link to hover
+
+projects-> overlay font family fix

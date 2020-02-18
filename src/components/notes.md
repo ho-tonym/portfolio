@@ -1,5 +1,8 @@
 if you pass style like spring- you need to ...spread it
 
+USECALLBACK
+Pass an inline callback and an array of dependencies. useCallback will return a memoized version of the callback that only changes if one of the dependencies has changed. This is useful when passing callbacks to optimized child components that rely on reference equality to prevent unnecessary renders (e.g. shouldComponentUpdate).
+
 - useTtransition first arg is the thing that it looks at to change, second needs a key for each array item, or obj, else it can be null. so if first arg isnt a bool you need it
 
 - the item in
