@@ -1,4 +1,4 @@
-import React, {useRef, useEffect} from 'react';
+import React from 'react';
 import styles from './home.module.css'
 import Project from './project'
 import ScrollDetect from './ScrollDetect'
@@ -13,5 +13,3 @@ function Home() {
 }
 
 export default Home
-// import './components/threeContainer'
-// <ThreeContainer />

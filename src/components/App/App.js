@@ -1,16 +1,16 @@
-import React, {lazy, Suspense} from 'react';
-import { MyProvider } from '../../MyProvider.js'
+import React, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom'
+import { MyProvider } from '../../MyProvider'
 import TransitionOverlay from '../TransitionOverlay'
 import { preloaderAnim } from '../utils'
 import Preloader from './Preloader'
 
-const FixedUI = lazy(() => import("../FixedUI"))
-const OverlayNav = lazy(() => import("../overlayNav"))
+const FixedUI = lazy(() => import('../FixedUI'))
+const OverlayNav = lazy(() => import('../overlayNav'))
 const Routes = lazy(() => (
   Promise.all([
-    import("./routes"),
-    new Promise(resolve => setTimeout(resolve, preloaderAnim))
+    import('./routes'),
+    new Promise(resolve => setTimeout(resolve, preloaderAnim)),
   ])
   .then(([moduleExports]) => moduleExports)
 ))
@@ -19,7 +19,7 @@ function App() {
   return (
     <MyProvider>
       <Router>
-          <TransitionOverlay />
+        <TransitionOverlay />
         <Suspense
           fallback={(
             <Preloader />

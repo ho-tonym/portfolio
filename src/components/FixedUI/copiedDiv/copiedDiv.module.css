@@ -1,0 +1,1 @@
+.copiedContainer{position:fixed;z-index:2000;top:0;right:50%;overflow:hidden;transform:translateX(50%)}.copiedContainer span{font-family:'din';font-size:1.2rem;display:flex;justify-content:center;align-items:center;height:2.5rem;width:8rem;background-color:white;color:#E8777C;border-radius:10px}.copiedContainer span p{padding-top:10px;cursor:default}

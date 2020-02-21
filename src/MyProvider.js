@@ -7,13 +7,14 @@ export const MyProvider = (props) => {
   const [overlayTextShowing, isOverlayTextShowing] = useState(false)
   const [lineHeight, setLineHeight] = useState(1)
   const [transOverlay, setTrans] = useState(true)
+  const [copied, setCopied] = useState(false)
   const [animValue, setAnimValue] = useState({
     overlay: false,
     rLinks: false,
     lineHeight: 1,
     title: [],
     mainImg: true,
-    lineColor: 'white',
+    lineColor: 'white'
   })
 	const [svgNumber, setSvgNumber] = useState([])
   const [weAreTransitioning, toggleTransition] = useState(false)
@@ -36,6 +37,8 @@ export const MyProvider = (props) => {
         setTrans,
         weAreTransitioning,
         toggleTransition,
+        copied,
+        setCopied
       }}
     >
       {props.children}

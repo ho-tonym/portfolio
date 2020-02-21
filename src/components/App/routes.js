@@ -1,38 +1,37 @@
-import React, {lazy, Suspense} from 'react';
+import React from 'react';
 // import { HashRouter as Router, Route, Switch } from 'react-router-dom'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import { useLocation } from "react-router-dom";
+import { Route, Switch } from 'react-router-dom'
 import Home from '../home'
 import EachProjectPage from '../EachProjectPage'
 import Page404 from '../page404'
 
 const routes = [
   {
-    name: "Home",
-    path: "/",
+    name: 'Home',
+    path: '/',
     exact: true,
     component: Home,
   },
   {
-    name: "Donuts",
-    path: "/projects/donuts",
+    name: 'Donuts',
+    path: '/projects/donuts',
     exact: true,
     component: EachProjectPage,
   },
   {
-    name: "Pokedex",
-    path: "/projects/pokedex",
+    name: 'Pokedex',
+    path: '/projects/pokedex',
     exact: true,
     component: EachProjectPage,
   },
   {
-    name: "Sort",
-    path: "/projects/visualizer",
+    name: 'Sort',
+    path: '/projects/visualizer',
     exact: true,
     component: EachProjectPage,
   },
   {
-    name: "Page404",
+    name: 'Page404',
     component: Page404,
   },
 ];

@@ -1,17 +1,30 @@
-import React, { useState, useCallback, useEffect, useRef } from 'react';
-import { useSpring, animated, useTransition } from 'react-spring'
+import React, { useCallback, useEffect, useRef } from 'react';
+import { animated, useTransition } from 'react-spring'
+import { useLocation } from 'react-router-dom';
 import styles from '../../FixedUI.module.css'
-import { numSvgAnim, myConfig } from "../../../utils"
-import { useStateValue } from "../../../../MyProvider"
-import { useLocation } from "react-router-dom";
+import { numSvgAnim } from '../../../utils'
+import { useStateValue } from '../../../../MyProvider'
 
-const Svg = ({ stroke, d, numSvgStyle }) => {
-	const { currentProj, animValue, svgNumber, setSvgNumber, weAreTransitioning } = useStateValue();
+const Svg = ({ stroke, d, numSvgStyle, mainPageColor }) => {
+	const { currentProj, svgNumber, setSvgNumber, weAreTransitioning } = useStateValue();
 	const ref = useRef([])
 	const location = useLocation();
 	const isInitialMount = useRef(true);
-//so if i click in while the svg is closing, it will show up
-//
+
+	const transitions = useTransition(svgNumber, null, {
+		config: numSvgAnim.numConfig,
+		from: { strokeDashoffset: stroke },
+		enter: { strokeDashoffset: 0 },
+		leave: { strokeDashoffset: stroke },
+	})
+
+	const svgAnim = useCallback(() => {
+		ref.current.map(clearTimeout)
+		ref.current = []
+		setSvgNumber([])
+		ref.current.push(setTimeout(() => setSvgNumber(['1']), numSvgAnim.secondDelay))
+	}, [])
+
 	useEffect(() => {
 		if (location.pathname === '/') {
 			isInitialMount.current ? isInitialMount.current = false : svgAnim()
@@ -25,20 +38,6 @@ const Svg = ({ stroke, d, numSvgStyle }) => {
 			setSvgNumber([])
 		}
 	}, [weAreTransitioning])
-
-  const transitions = useTransition(svgNumber, null, {
-    config: numSvgAnim.numConfig,
-    from: { strokeDashoffset: stroke },
-    enter: { strokeDashoffset: 0 },
-    leave: { strokeDashoffset: stroke },
-  })
-
-	const svgAnim = useCallback(() => {
-		ref.current.map(clearTimeout)
-		ref.current = []
-		setSvgNumber([])
-		ref.current.push(setTimeout(() => setSvgNumber(['1']), numSvgAnim.secondDelay))
-	}, [])
 
 	return (
 		<animated.svg id="changingNumberSVG"
@@ -56,7 +55,7 @@ const Svg = ({ stroke, d, numSvgStyle }) => {
 					fill="none"
 					strokeWidth="2"
 					strokeMiterlimit="10"
-					stroke={"#fff"}
+					stroke={mainPageColor}
 					d={d}
 					style={{ ...props }}
 					strokeDasharray={stroke}

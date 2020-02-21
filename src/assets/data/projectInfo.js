@@ -103,16 +103,7 @@ export default
     alt: "donut pic",
     src: donut,
     link: "projects/donuts",
-    firstImages:[
-      {
-        alt: "donut image 1",
-        pic: pic1Donut
-      },
-      {
-        alt: "donut image 2",
-        pic: pic2Donut
-      }
-    ],
+    firstImages:[],
     secondImages:[
       {
         alt: "donut image 3",

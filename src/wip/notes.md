@@ -1,5 +1,19 @@
 if you pass style like spring- you need to ...spread it
 
+./Preloader.index
+titleanim gets called multiple times?
+const titleAnimation = useCallback(() => {
+	ref.current.map(clearTimeout)
+	ref.current = []
+	ref.current.push(setTimeout(() => setTitle('TONY HO'), 500))// brings it back- (delay)when to bring it back
+	ref.current.push(setTimeout(() => setTitle(''), 2700))// brings it back- (delay)when to bring it back
+	setTimeout(() => setColor(false), 2700)
+	// 4000 total
+}, [])
+
+can make shit shorter
+  // const [aniPropsPink, setPink] = useSpring(() => ({ x: 0, y: 0, scale: 1 }))
+
 USECALLBACK
 Pass an inline callback and an array of dependencies. useCallback will return a memoized version of the callback that only changes if one of the dependencies has changed. This is useful when passing callbacks to optimized child components that rely on reference equality to prevent unnecessary renders (e.g. shouldComponentUpdate).
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSpring, animated } from 'react-spring'
-import { useHistory, Link, useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import styles from './projectPage.module.css'
 import projectInfo from '../../assets/data/projectInfo'
 import { useStateValue } from '../../MyProvider'
@@ -8,9 +8,31 @@ import CloseBtn from '../shared/CloseBtn'
 import CustomScrollBar from './CustomScrollBar'
 import { myConfig } from '../utils'
 
-
 const EachProjectPage = () => {
   const location = useLocation()
+  const history = useHistory()
+  const { currentProj, setAnimValue, animValue, setSvgNumber, setTrans, setProj } = useStateValue();
+  const { backgroundColor, alt, src, nameArray,
+    colorsArray, description,
+    githubLink, hostLink,
+    firstImages, secondImages,
+  } = projectInfo[currentProj]
+  const { projectPage, zero, one,
+    second, third, backgroundSection,
+    websiteImages,
+  } = styles
+
+  const [titleShowing, set] = useState(false)
+  const h1Props = useSpring({
+    transform: titleShowing ? 'translate3d(0px, 0%, 0px)' : 'translate3d(0px, 100%, 0px)',
+    config: myConfig,
+  })
+  const [xButton, setXButton] = useState(false)
+  const closeBtnProps = useSpring({
+    transform: xButton ? 'translate3d(0px, 0%, 0px)' : 'translate3d(0px, -150%, 0px)',
+    config: myConfig,
+  })
+
   useEffect(() => {
     document.body.style.overflow = 'auto';
     set(true)
@@ -27,30 +49,6 @@ const EachProjectPage = () => {
       setAnimValue({ ...animValue, lineColor: 'white' })
     }
   }, [])
-  const history = useHistory()
-  const { currentProj, setAnimValue, animValue, setSvgNumber, setTrans, setProj } = useStateValue();
-  const { backgroundColor, alt, src, nameArray,
-    colorsArray, description,
-    githubLink, hostLink,
-    firstImages, secondImages,
-  } = projectInfo[currentProj]
-  const { projectPage, zero, one,
-    second, third, backgroundSection,
-    websiteImages, colors,
-  } = styles
-/////////////////
-// do this to make shit shorter
-  // const [aniPropsPink, setPink] = useSpring(() => ({ x: 0, y: 0, scale: 1 }))
-  const [titleShowing, set] = useState(false)
-  const h1Props = useSpring({
-    transform: titleShowing ? 'translate3d(0px, 0%, 0px)' : 'translate3d(0px, 100%, 0px)',
-    config: myConfig
-  })
-  const [xButton, setXButton] = useState(false)
-  const closeBtnProps = useSpring({
-    transform: xButton ? 'translate3d(0px, 0%, 0px)' : 'translate3d(0px, -150%, 0px)',
-    config: myConfig
-  })
 
   function delayedRedirect() {
     document.body.style.overflow = 'hidden';
@@ -95,11 +93,13 @@ const EachProjectPage = () => {
         <p>{description}</p>
       </section>
       <section className={backgroundSection} style={{ backgroundColor }} />
-      <section className={websiteImages}>
-        <div>
-          {firstImages.map(i => <img key={i.alt} alt={i.alt} src={i.pic} />)}
-        </div>
-      </section>
+      {firstImages.length > 0 && (
+        <section className={websiteImages}>
+          <div>
+            {firstImages.map(i => <img key={i.alt} alt={i.alt} src={i.pic} />)}
+          </div>
+        </section>
+      )}
       <section className={second}>
         <div>
           <h1>02</h1>
@@ -165,25 +165,3 @@ const EachProjectPage = () => {
 }
 
 export default EachProjectPage
-// {colorsArray.map(c => (
-//   <span
-//     key={c}
-//     className={colors}
-//     style={{ backgroundColor: c }}>
-//     <p>{c}</p>
-//   </span>
-// ))}
-
-// {colorsArray.forEach(element => (
-//   element.map(c => {
-//     console.log(c)
-//     return(
-//       <span
-//         key={c}
-//         className={colors}
-//         style={{ backgroundColor: c }} >
-//         <p>{c}</p>
-//       </span>
-//     )
-//   })
-// ))}
