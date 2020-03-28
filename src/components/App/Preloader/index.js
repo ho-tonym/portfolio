@@ -6,14 +6,13 @@ import { homeToProjectAnim } from '../../utils'
 import projectInfo from '../../../assets/data/projectInfo'
 import { useStateValue } from '../../../MyProvider'
 
-
 const Preloader = () => {
   const location = useLocation();
   const { currentProj, setSvgNumber, setTrans } = useStateValue();
-  const { backgroundColor } = projectInfo[currentProj]
   const [currentTitle, setTitle] = useState('')
   const ref = useRef([])
-  const [isBlack, setColor] = useState(true)
+  const [isBlack, setIsBlack] = useState(true)
+  const { backgroundColor } = projectInfo[currentProj]
   const colorStyle = { backgroundColor: isBlack ? '#000' : backgroundColor }
 
   const titleAnimation = useCallback(() => {
@@ -21,7 +20,7 @@ const Preloader = () => {
     ref.current = []
     ref.current.push(setTimeout(() => setTitle('TONY HO'), 500))// brings it back- (delay)when to bring it back
     ref.current.push(setTimeout(() => setTitle(''), 2700))// brings it back- (delay)when to bring it back
-    setTimeout(() => setColor(false), 2700) // 4000 total
+    setTimeout(() => setIsBlack(false), 2700) // 4000 total
   }, [])
 
   useEffect(() => {
@@ -32,6 +31,7 @@ const Preloader = () => {
       }
       setTrans(false)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
 

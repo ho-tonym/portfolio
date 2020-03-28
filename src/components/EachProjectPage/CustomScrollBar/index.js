@@ -19,11 +19,13 @@ const CustomScrollBar = () => {
     if (!(location.pathname === '/')) {
       handleScroll()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname])
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

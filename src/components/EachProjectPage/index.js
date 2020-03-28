@@ -48,6 +48,7 @@ const EachProjectPage = () => {
       setTrans(false)
       setAnimValue({ ...animValue, lineColor: 'white' })
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   function delayedRedirect() {

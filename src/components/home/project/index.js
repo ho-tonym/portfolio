@@ -37,13 +37,6 @@ function Project() {
     config: myConfig,
   })
 
-  const titleAnimation = () => { // function gets called multiple times
-    ref.current.map(clearTimeout)
-    ref.current = []
-    setAnimValue({ ...animValue, title: [] })// leave
-    ref.current.push(setTimeout(() => setAnimValue({ ...animValue, title: [nameRef.current] }), titleAnimTime))// brings it back- (delay)when to bring it back
-  }
-
   function delayedRedirect() {
     if (!weAreTransitioning) {
       toggleTransition(true)
@@ -58,13 +51,21 @@ function Project() {
   }
 
   useEffect(() => {
+    const titleAnimation = () => { // function gets called multiple times
+      ref.current.map(clearTimeout)
+      ref.current = []
+      setAnimValue({ ...animValue, title: [] })// leave
+      ref.current.push(setTimeout(() => setAnimValue({ ...animValue, title: [nameRef.current] }), titleAnimTime))// brings it back- (delay)when to bring it back
+    }
     isInitialMount.current ? isInitialMount.current = false : titleAnimation()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentProj]);
 
   useEffect(() => {
     document.body.style.overflow = 'hidden'
     setAnimValue({ ...animValue, title: [nameRef.current], rLinks: true })
     toggleImage(true)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

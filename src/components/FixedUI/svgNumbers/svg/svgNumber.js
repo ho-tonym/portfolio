@@ -23,12 +23,14 @@ const Svg = ({ stroke, d, numSvgStyle, mainPageColor }) => {
 		ref.current = []
 		setSvgNumber([])
 		ref.current.push(setTimeout(() => setSvgNumber(['1']), numSvgAnim.secondDelay))
+// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 
 	useEffect(() => {
 		if (location.pathname === '/') {
 			isInitialMount.current ? isInitialMount.current = false : svgAnim()
 		}
+// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [currentProj]);
 
 	useEffect(() => {
@@ -37,6 +39,7 @@ const Svg = ({ stroke, d, numSvgStyle, mainPageColor }) => {
 			ref.current = []
 			setSvgNumber([])
 		}
+// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [weAreTransitioning])
 
 	return (

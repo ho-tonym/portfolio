@@ -18,7 +18,7 @@ const Routes = lazy(() => (
 function App() {
   return (
     <MyProvider>
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <TransitionOverlay />
         <Suspense
           fallback={(

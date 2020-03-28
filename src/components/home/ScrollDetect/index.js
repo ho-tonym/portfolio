@@ -49,11 +49,13 @@ const ScrollDetect = () => {
         scrollDown()
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
     window.addEventListener('wheel', handleNavigation);
     return () => window.removeEventListener('wheel', handleNavigation);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

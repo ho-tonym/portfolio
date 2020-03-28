@@ -82,6 +82,7 @@ const FixedUI = () => {
     }else{
       setTextColor('black')
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname])
 
 
