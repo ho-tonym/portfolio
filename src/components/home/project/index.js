@@ -16,10 +16,18 @@ function Project() {
   nameRef.current = name;
 
   const [imageIsSmol, setImageIsSmol] = useState(true)
+  // const imageProps = useSpring({
+  //   width: imageIsSmol ? '80%' : '100vw',
+  //   height: imageIsSmol ? '50%' : '100vh',
+  //   maxWidth: imageIsSmol ? '60%' : '100vw',
+  //   top: imageIsSmol ? '42vh' : '50%',
+  //   config: homeToProjectAnim.imageConfig,
+  // })
+
   const imageProps = useSpring({
-    width: imageIsSmol ? '80%' : '100%',
-    height: imageIsSmol ? '50%' : '100%',
-    maxWidth: imageIsSmol ? '50rem' : '100%',
+    width: imageIsSmol ? '80vw' : '100vw',
+    height: imageIsSmol ? '50vh' : '100vh',
+    maxWidth: imageIsSmol ? '60vw' : '100vw',
     top: imageIsSmol ? '42vh' : '50%',
     config: homeToProjectAnim.imageConfig,
   })
