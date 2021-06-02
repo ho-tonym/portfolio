@@ -4,6 +4,7 @@ import { MyProvider } from '../../MyProvider'
 import TransitionOverlay from '../TransitionOverlay'
 import { preloaderAnim } from '../utils'
 import Preloader from './Preloader'
+import GoogleAnalytics from './GoogleAnalytics'
 
 const FixedUI = lazy(() => import('../FixedUI'))
 const OverlayNav = lazy(() => import('../overlayNav'))
@@ -25,6 +26,7 @@ function App() {
             <Preloader />
           )}
         >
+          <GoogleAnalytics />
           <FixedUI />
           <OverlayNav />
           <Routes />

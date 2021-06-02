@@ -27,8 +27,8 @@ function Project() {
   const transitions = useTransition(animValue.title, null, {
     config: myConfig,
     from: { transform: 'translate3d(0px, 50%, 0px)' },
-    enter: { transform: 'translate3d(0px, -45%, 0px)' },
-    leave: { transform: 'translate3d(0px, -130%, 0px)' }, // diff animations to play before exiting
+    enter: { transform: 'translate3d(0px, -55%, 0px)' },
+    leave: { transform: 'translate3d(0px, -140%, 0px)' }, // diff animations to play before exiting
   })
 
   const [isImageOn, toggleImage] = useState(false)
