@@ -46,6 +46,7 @@ export default
         pic: pic2Sort
       }
     ],
+    date:"Nov 30, 2019",
     colorsArray: [["#fff", "#2f2f2f", "#017aff", "#636363", "#ff9f38", "#ff6e8d"]],
     description: "This app was a way for me to learn more about sorting algorithms and help others understand the differences between some of the more popular ones. Feel free to play around with it!",
     githubLink:"https://github.com/ho-tonym/sorting-visualizer",
@@ -92,6 +93,7 @@ export default
       ["#9acff7", "#8accff", "#55acee", "#6FC6FF", "#3C93D5"],
       ["#11bd0e","#e04b4b"]
     ],
+    date:"Aug 6, 2019",
     description: "The purpose of this app is for convenient comparisons of your pokemon against certain matchups to determine your best lineup. Specifically for Pokemon Go.",
     githubLink:"https://github.com/ho-tonym/pokedex",
     hostLink:"https://sheltered-taiga-80254.herokuapp.com/"
@@ -120,6 +122,7 @@ export default
       ["#ED6B74", "#37dacb", "#a78be8"],
       ["#00d2ff", "#3a7bd5"]
     ],
+    date:"Jul 30, 2019",
     description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
     githubLink:"https://github.com/ho-tonym/donutproductpage",
     hostLink:"https://ho-tonym.github.io/donutproductpage/"

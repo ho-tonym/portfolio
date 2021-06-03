@@ -15,7 +15,7 @@ const EachProjectPage = () => {
   const { backgroundColor, alt, src, nameArray,
     colorsArray, description,
     githubLink, hostLink,
-    firstImages, secondImages,
+    firstImages, secondImages, date
   } = projectInfo[currentProj]
   const { projectPage, zero, one,
     second, third, backgroundSection,
@@ -139,7 +139,7 @@ const EachProjectPage = () => {
           <hr />
           <span>
             <h3>DATE</h3>
-            <p>10.2017</p>
+            <p>{date}</p>
           </span>
           <hr />
 
